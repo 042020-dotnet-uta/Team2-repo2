@@ -21,12 +21,6 @@ steps:
     publishWebProjects: false
     projects: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/Projects/DeliveryApp/DeliveryApp.Web/bin/Debug/netcoreapp3.1/publish.zip'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
