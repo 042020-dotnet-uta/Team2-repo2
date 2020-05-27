@@ -9,6 +9,13 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'dariusSonarCloud'
+    organization: 'team-2'
+    scannerMode: 'MSBuild'
+    projectKey: 'project-2'
+
 steps:
 - task: DotNetCoreCLI@2
   inputs:
