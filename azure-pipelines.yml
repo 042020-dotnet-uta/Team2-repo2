@@ -24,6 +24,15 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'test'
+    projects: 'Projects/DeliveryApp/DeliveryApp.Test/DeliveryApp.Test.csproj'
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'publish'
     publishWebProjects: false
     projects: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
