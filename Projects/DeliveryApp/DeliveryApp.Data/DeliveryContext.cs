@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using DeliveryApp.Data.Objects;
+
 
 namespace DeliveryApp.Data
 {
@@ -9,14 +11,26 @@ namespace DeliveryApp.Data
         public DeliveryContext (DbContextOptions<DeliveryContext> options) : base(options) {
         }
 
-        // public DbSet<Customer> Customers { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Item> Items { get; set; }
+        public DbSet<ItemCategory> ItemCategories { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderAssignment> OrderAssignments { get; set; }
+        public DbSet<OrderAssignmentReason> OrderAssignmentReasons { get; set; }
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             if (!options.IsConfigured)
             {
                 // TODO Move to some properties file?
-                // options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=business;Trusted_Connection=True;MultipleActiveResultSets=true");
+                 options.UseSqlServer("Server=tcp:ryanoxford.database.windows.net,1433;Initial Catalog=DeliveryApp;Persist Security Info=False;User ID=ryanoxford;Password=PickledTubas!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

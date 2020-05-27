@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\DeliveryApp.Data",
+    "\\DeliveryApp.Data\\Objects",
+    "\\DeliveryApp.Data\\Repository",
+    "\\DeliveryApp.Test",
+    "\\DeliveryApp.Web"
+  ],
+  "SelectedNode": "\\DeliveryApp.Data\\Objects\\Category.cs",
+  "PreviewInSolutionExplorer": false
+}
