@@ -21,6 +21,7 @@ namespace DeliveryApp.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderAssignment> OrderAssignments { get; set; }
         public DbSet<OrderAssignmentReason> OrderAssignmentReasons { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
 
 
