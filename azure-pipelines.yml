@@ -17,10 +17,7 @@ steps:
     scannerMode: 'MSBuild'
     projectKey: 'project-2'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
+
 
 - task: DotNetCoreCLI@2
   inputs:
