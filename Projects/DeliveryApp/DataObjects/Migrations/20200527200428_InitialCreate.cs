@@ -93,6 +93,28 @@ namespace DeliveryApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    CategoryID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Items_Categories_CategoryID",
+                        column: x => x.CategoryID,
+                        principalTable: "Categories",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
@@ -184,35 +206,6 @@ namespace DeliveryApp.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: false),
-                    Description = table.Column<string>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    CategoryID = table.Column<int>(nullable: true),
-                    OrderID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Items", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Items_Categories_CategoryID",
-                        column: x => x.CategoryID,
-                        principalTable: "Categories",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Orders_OrderID",
-                        column: x => x.OrderID,
-                        principalTable: "Orders",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ItemCategories",
                 columns: table => new
                 {
@@ -234,6 +227,32 @@ namespace DeliveryApp.Data.Migrations
                         name: "FK_ItemCategories_Items_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrderItems",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrderID = table.Column<int>(nullable: true),
+                    ItemID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrderItems", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OrderItems_Orders_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Orders",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -264,11 +283,6 @@ namespace DeliveryApp.Data.Migrations
                 column: "CategoryID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_OrderID",
-                table: "Items",
-                column: "OrderID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderAssignments_ReasonID",
                 table: "OrderAssignments",
                 column: "ReasonID");
@@ -277,6 +291,16 @@ namespace DeliveryApp.Data.Migrations
                 name: "IX_OrderAssignments_UserID",
                 table: "OrderAssignments",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_ItemID",
+                table: "OrderItems",
+                column: "ItemID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrderItems_OrderID",
+                table: "OrderItems",
+                column: "OrderID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Orders_CustomerID",
@@ -316,16 +340,19 @@ namespace DeliveryApp.Data.Migrations
                 name: "OrderAssignments");
 
             migrationBuilder.DropTable(
-                name: "Items");
+                name: "OrderItems");
 
             migrationBuilder.DropTable(
                 name: "OrderAssignmentReasons");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Items");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Users");

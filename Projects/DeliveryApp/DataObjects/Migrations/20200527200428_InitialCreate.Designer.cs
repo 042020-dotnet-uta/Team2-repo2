@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeliveryApp.Data.Migrations
 {
     [DbContext(typeof(DeliveryContext))]
-    [Migration("20200527180208_InitialCreate")]
+    [Migration("20200527200428_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -101,17 +101,12 @@ namespace DeliveryApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderID")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("OrderID");
 
                     b.ToTable("Items");
                 });
@@ -215,6 +210,28 @@ namespace DeliveryApp.Data.Migrations
                     b.ToTable("OrderAssignmentReasons");
                 });
 
+            modelBuilder.Entity("DeliveryApp.Data.Objects.OrderItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ItemID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OrderID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ItemID");
+
+                    b.HasIndex("OrderID");
+
+                    b.ToTable("OrderItems");
+                });
+
             modelBuilder.Entity("DeliveryApp.Data.Objects.Restaurant", b =>
                 {
                     b.Property<int>("ID")
@@ -303,10 +320,6 @@ namespace DeliveryApp.Data.Migrations
                     b.HasOne("DeliveryApp.Data.Objects.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryID");
-
-                    b.HasOne("DeliveryApp.Data.Objects.Order", null)
-                        .WithMany("Items")
-                        .HasForeignKey("OrderID");
                 });
 
             modelBuilder.Entity("DeliveryApp.Data.Objects.ItemCategory", b =>
@@ -348,6 +361,17 @@ namespace DeliveryApp.Data.Migrations
                     b.HasOne("DeliveryApp.Data.Objects.User", "User")
                         .WithMany()
                         .HasForeignKey("UserID");
+                });
+
+            modelBuilder.Entity("DeliveryApp.Data.Objects.OrderItem", b =>
+                {
+                    b.HasOne("DeliveryApp.Data.Objects.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemID");
+
+                    b.HasOne("DeliveryApp.Data.Objects.Order", "Order")
+                        .WithMany("OrderItems")
+                        .HasForeignKey("OrderID");
                 });
 
             modelBuilder.Entity("DeliveryApp.Data.Objects.User", b =>
