@@ -26,10 +26,10 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-    - task: AzureRmWebAppDeployment@4
-      inputs:
-        ConnectionType: 'AzureRM'
-        azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
-        appType: 'webApp'
-        WebAppName: 'DariusVallejoPipelineDemo'
-        packageForLinux: '$(System.DefaultWorkingDirectory)/examples/my-new-app/bin/Debug/netcoreapp3.1/publish.zip'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
+    appType: 'webApp'
+    WebAppName: 'DariusVallejoPipelineDemo'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/examples/my-new-app/bin/Debug/netcoreapp3.1/publish.zip'
