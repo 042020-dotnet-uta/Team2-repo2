@@ -1,0 +1,5 @@
+C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\Data.deps.json
+C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\Data.dll
+C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\Data.csprojAssemblyReference.cache
+C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\Data.AssemblyInfoInputs.cache
+C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\Data.AssemblyInfo.cs
