@@ -12,6 +12,11 @@ pool:
 steps:
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'build'
+    projects: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
+
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'publish'
     publishWebProjects: true
     arguments: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
