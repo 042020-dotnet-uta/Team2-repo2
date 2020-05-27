@@ -18,8 +18,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'publish'
-    publishWebProjects: true
-    arguments: 'Projects/DeliveryApp/DeliveryApp.Web'
+    publishWebProjects: false
+    projects: 'Projects/DeliveryApp/DeliveryApp.Web/DeliveryApp.Web.csproj'
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -33,4 +33,4 @@ steps:
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
     appType: 'webApp'
     WebAppName: 'DariusVallejoPipelineDemo'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/examples/my-new-app/bin/Debug/netcoreapp3.1/publish.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/Projects/DeliveryApp/DeliveryApp.Web/bin/Debug/netcoreapp3.1/publish.zip'
