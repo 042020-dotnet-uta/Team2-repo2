@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {}
+    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {
+    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
         "projectName": "DeliveryApp.Test",
-        "projectPath": "C:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
-        "packagesPath": "C:\\Users\\dariu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\obj\\",
+        "projectPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
+        "packagesPath": "C:\\Users\\Try hard\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\dariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Try hard\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +38,12 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
