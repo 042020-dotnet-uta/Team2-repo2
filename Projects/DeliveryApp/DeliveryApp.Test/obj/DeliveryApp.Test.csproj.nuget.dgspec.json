@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {}
+    "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {
+    "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
+        "projectUniqueName": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
         "projectName": "DeliveryApp.Test",
-        "projectPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
-        "packagesPath": "C:\\Users\\Try hard\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\obj\\",
+        "projectPath": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\DeliveryApp.Test.csproj",
+        "packagesPath": "C:\\Users\\Gungnir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DeliveryApp.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Try hard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gungnir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -50,19 +54,23 @@
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[16.5.0, )"
+              "version": "[16.6.1, )"
             },
             "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[1.2.1, )"
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.4.0, )"
+              "version": "[2.4.1, )"
             },
             "xunit.runner.visualstudio": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[2.4.0, )"
+              "version": "[2.4.1, )"
             }
           },
           "imports": [

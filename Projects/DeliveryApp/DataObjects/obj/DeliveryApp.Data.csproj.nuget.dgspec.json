@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj": {}
+    "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj": {
+    "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
         "projectName": "DeliveryApp.Data",
-        "projectPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
-        "packagesPath": "C:\\Users\\Try hard\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\obj\\",
+        "projectPath": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
+        "packagesPath": "C:\\Users\\Gungnir\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Gungnir\\Desktop\\New folder\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Try hard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Gungnir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -38,6 +38,26 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNet.WebApi.Core": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.2.8, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
