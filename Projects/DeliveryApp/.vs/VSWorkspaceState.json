@@ -4,9 +4,7 @@
     "\\DeliveryApp.Data",
     "\\DeliveryApp.Data\\Objects",
     "\\DeliveryApp.Data\\Repository",
-    "\\DeliveryApp.Test",
-    "\\DeliveryApp.Web"
+    "\\DeliveryApp.Data\\services"
   ],
-  "SelectedNode": "\\DeliveryApp.Web",
   "PreviewInSolutionExplorer": false
 }
