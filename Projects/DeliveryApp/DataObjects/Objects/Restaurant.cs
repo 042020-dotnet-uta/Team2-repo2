@@ -12,7 +12,7 @@ namespace DeliveryApp.Data.Objects
         public int ID { get; set; }
         [Required]
         [DisplayName("Restaurant Name")]
-        [RegularExpression(InputValidation.namePattern, ErrorMessage = InputValidation.nameError)]
+      //  [RegularExpression(InputValidation.namePattern, ErrorMessage = InputValidation.nameError)]
         public string Name { get; set; }
         [Required]
         [DisplayName("Restaurant Description")]

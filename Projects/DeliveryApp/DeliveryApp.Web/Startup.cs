@@ -1,7 +1,10 @@
+using DeliveryApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +29,12 @@ namespace DeliveryApp.Web
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            //This should now be able to have compatability for the API's we are using
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            
+            //This is how you connect the DbContext to the DB … ConnectionsString = "DevConnect" is the name we gave in appsettings.json
+            services.AddDbContext<DeliveryContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DevConnect") ));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
