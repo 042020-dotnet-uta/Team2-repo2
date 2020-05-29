@@ -1,9 +1,0 @@
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DataObjects.deps.json
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DataObjects.dll
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DataObjects.pdb
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.csprojAssemblyReference.cache
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.AssemblyInfoInputs.cache
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.AssemblyInfo.cs
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.csproj.CoreCompileInputs.cache
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.dll
-C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DataObjects.pdb

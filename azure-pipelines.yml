@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 
 steps:
 - task: SonarCloudPrepare@1
@@ -22,10 +22,12 @@ steps:
     command: 'build'
     projects: 'Projects/DeliveryApp/DeliveryApp.Web.sln'
 
-- task: DotNetCoreCLI@2
+- task: VSTest@2
   inputs:
-    command: 'test'
-    projects: 'Projects/DeliveryApp/DeliveryApp.Test/DeliveryApp.Test.csproj'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: 'Projects\DeliveryApp\DeliveryApp.Test\bin\Debug\netcoreapp3.1\DeliveryApp.Test.dll'
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    resultsFolder: 'D:\a\1\TestResults'
 
 - task: SonarCloudAnalyze@1
 
