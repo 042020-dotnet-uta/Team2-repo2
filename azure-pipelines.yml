@@ -22,11 +22,6 @@ steps:
     command: 'build'
     projects: 'Projects/DeliveryApp/DeliveryApp.Web.sln'
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: 'Projects/DeliveryApp/DeliveryApp.Test/DeliveryApp.Test.csproj'
-
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
