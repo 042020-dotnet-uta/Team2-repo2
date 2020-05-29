@@ -4964,19 +4964,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Try hard\\.nuget\\packages\\": {}
+    "C:\\Users\\dariu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
+      "projectUniqueName": "c:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
       "projectName": "DeliveryApp.Data",
-      "projectPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
-      "packagesPath": "C:\\Users\\Try hard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Try hard\\Desktop\\Rev Repo\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\obj\\",
+      "projectPath": "c:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\DeliveryApp.Data.csproj",
+      "packagesPath": "C:\\Users\\dariu\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\dariu\\042020-dotnet-uta\\Team2-repo2\\Projects\\DeliveryApp\\DataObjects\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Try hard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dariu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

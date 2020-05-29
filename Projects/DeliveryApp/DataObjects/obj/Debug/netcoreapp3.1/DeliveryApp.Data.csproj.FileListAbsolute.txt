@@ -10,3 +10,15 @@ C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\
 C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.runtimeconfig.dev.json
 C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.csproj.CoreCompileInputs.cache
 C:\Users\Try hard\Desktop\Rev Repo\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.genruntimeconfig.cache
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.deps.json
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.runtimeconfig.json
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.runtimeconfig.dev.json
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.dll
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\bin\Debug\netcoreapp3.1\DeliveryApp.Data.pdb
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.csprojAssemblyReference.cache
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.AssemblyInfoInputs.cache
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.AssemblyInfo.cs
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.dll
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.pdb
+C:\Users\dariu\042020-dotnet-uta\Team2-repo2\Projects\DeliveryApp\DataObjects\obj\Debug\netcoreapp3.1\DeliveryApp.Data.genruntimeconfig.cache
