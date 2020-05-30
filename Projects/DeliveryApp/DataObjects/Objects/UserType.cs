@@ -12,11 +12,11 @@ namespace DeliveryApp.Data.Objects
         public int ID { get; set; }
         [Required]
         [DisplayName("Menu Item")]
-        [RegularExpression(InputValidation.productPattern, ErrorMessage =InputValidation.productError)]
+        //[RegularExpression(InputValidation.productPattern, ErrorMessage =InputValidation.productError)]
         public string Type { get; set; }
         [Required]
         [DisplayName("Item Description")]
-        [RegularExpression(InputValidation.descriptionPattern, ErrorMessage = InputValidation.descriptionError)]
+        //[RegularExpression(InputValidation.descriptionPattern, ErrorMessage = InputValidation.descriptionError)]
         public string Description { get; set; }
         public UserType() { }
 
