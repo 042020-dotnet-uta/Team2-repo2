@@ -21,6 +21,7 @@ namespace DeliveryApp.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderAssignment> OrderAssignments { get; set; }
         public DbSet<OrderAssignmentReason> OrderAssignmentReasons { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
 
 
 
@@ -30,7 +31,8 @@ namespace DeliveryApp.Data
             if (!options.IsConfigured)
             {
                 // TODO Move to some properties file?
-                 options.UseSqlServer("Server=tcp:ryanoxford.database.windows.net,1433;Initial Catalog=DeliveryApp;Persist Security Info=False;User ID=ryanoxford;Password=PickledTubas!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                // options.UseSqlServer("Server=tcp:ryanoxford.database.windows.net,1433;Initial Catalog=DeliveryApp;Persist Security Info=False;User ID=ryanoxford;Password=PickledTubas!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                options.UseSqlServer("Server=DESKTOP-KGITG3T;Database=DeliveryAppTestDB-1;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

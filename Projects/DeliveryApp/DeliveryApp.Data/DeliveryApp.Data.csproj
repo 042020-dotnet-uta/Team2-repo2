@@ -1,25 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <Compile Remove="Migrations\20200527180105_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200527180105_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200527180208_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200527180208_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200527195802_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200527195802_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200527200033_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200527200033_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Validation\" />
   </ItemGroup>
 
 </Project>

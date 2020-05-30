@@ -13,7 +13,7 @@ namespace DeliveryApp.Data.Objects
         public User Preparer { get; set; }
         public User Driver { get; set; }
         public Restaurant Location { get; set; }
-        public List<Item> Items { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
         public Order() { }
 
     }
