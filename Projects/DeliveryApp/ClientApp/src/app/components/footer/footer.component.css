@@ -1,0 +1,12 @@
+a {
+    color: orange;
+}
+
+.footer-main-div {
+    background-color: #212121;
+    border-top: 0.1em solid black; 
+}
+
+.footer-filler-div > a {
+    margin-right: 1em;
+}

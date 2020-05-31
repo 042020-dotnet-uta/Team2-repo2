@@ -1,0 +1,60 @@
+<mat-table [dataSource]="inventories" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.product.price}} </mat-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  
+  <section class="sample-app-content">
+      <h1>Model-based Form Example:</h1>
+      <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit()">
+          <p>
+              <label>Product Name:</label>
+              <input type="text" formControlName="name">
+          </p>
+          <p>
+              <label>Product Price:</label>
+              <input type="text" formControlName="price">
+          </p>
+          <p>
+              <label>Product Quantity:</label>
+              <input type="text" formControlName="quantity">
+          </p>
+          <p>
+              <button type="submit" [disabled]="!inventoryForm.valid">Submit</button>
+          </p>
+      </form>
+  </section>
+
+<ul class="inventories">
+    <li *ngFor="let inventory of inventories">
+        <a routerLink="/detail/{{inventory.id}}">
+          <span class="badge">{{inventory.id}}</span>
+        </a>
+        <!-- <button class="delete" title="delete hero"
+          (click)="delete(inventory)">x</button> -->
+      </li>
+    </ul>
+
