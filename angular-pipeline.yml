@@ -9,17 +9,17 @@
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script :
-  workingDirectory: 'Projects/DeliveryApp/ClientApp'
-
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
+- task: CmdLine@2
+  inputs:
+    script: 'npm install Projects/DeliveryApp/ClientApp'
+
+# - script: |
+#     npm install -g @angular/cli
+#     npm install
+#     ng build --prod
+#   displayName: 'npm install and build'
