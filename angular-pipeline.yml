@@ -14,9 +14,10 @@ steps:
   inputs:
     SonarCloud: 'dariusSonarCloud'
     organization: 'team-2'
-    scannerMode: 'MSBuild'
-    projectKey: 'project-2-client'
-    projectName: 'project-2-client'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'project-2-client'
+    cliSources: 'Project/DeliveryApp/ClientApp'
 
 - task: NodeTool@0
   inputs:
