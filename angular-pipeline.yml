@@ -32,6 +32,11 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
+- task: CmdLine@2
+  inputs:
+    script: 'npx ng test --code-coverage'
+    workingDirectory: 'Projects/DeliveryApp/ClientApp'
+
 - task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
