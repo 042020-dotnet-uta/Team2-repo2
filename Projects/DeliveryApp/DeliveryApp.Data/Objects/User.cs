@@ -25,10 +25,13 @@ namespace DeliveryApp.Data.Objects
         [DisplayName("Last Name")]
         public string LName { get; set; }
         [Required]
-        [RegularExpression(InputValidation.passwordPattern, ErrorMessage = InputValidation.passwordError)]
+        //[RegularExpression(InputValidation.passwordPattern, ErrorMessage = InputValidation.passwordError)]
         [PasswordPropertyText]
         public string Password { get; set; }
+
+        public int UserTypeID { get; set; }// This is a navigation property, allows uas to acces the UserType Property .. below
         public UserType UserType { get; set; }
+
         /// <summary>
         /// No-argument constructor
         /// </summary>

@@ -12,11 +12,9 @@ namespace DeliveryApp.Data.Objects
         public int ID { get; set; }
         [Required]
         [DisplayName("Reason")]
-        [RegularExpression(InputValidation.namePattern, ErrorMessage = InputValidation.nameError)]
         public string Reason { get; set; }
         [Required]
         [DisplayName("Reason Description")]
-        [RegularExpression(InputValidation.descriptionPattern, ErrorMessage = InputValidation.descriptionError)]
         public string Description { get; set; }
         public OrderAssignmentReason() { }
 
