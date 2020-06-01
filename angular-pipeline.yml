@@ -41,3 +41,23 @@ steps:
     WebAppName: 'deliveryclient'
     packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
 
+# perform unit-tets and publish test and code coverage results
+- script: |
+    npx ng test --watch=false --karmaConfig karma.conf.ci.js --code-coverage
+  displayName: 'perform unit tests'   
+  workingDirectory: 'Projects/DeliveryApp/ClientApp' 
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TESTS-*.xml'
+  displayName: 'publish unit test results'
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'publish code coverage report'
+  condition: succeededOrFailed()
+  inputs:
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(Build.SourcesDirectory)/coverage/cobertura-coverage.xml'
+    failIfCoverageEmpty: true  
