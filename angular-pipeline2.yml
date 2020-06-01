@@ -31,11 +31,13 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
-- task: PublishBuildArtifacts@1
+- task: ArchiveFiles@2
   inputs:
-    PathtoPublish: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    rootFolderOrFile: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: 'Projects/DeliveryApp/ClientApp/dist/ClientApp.zip'
+    replaceExistingArchive: true
 
 - task: AzureRmWebAppDeployment@4
   inputs:
@@ -43,7 +45,13 @@ steps:
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
     appType: 'webAppLinux'
     WebAppName: 'deliveryclient'
-    packageForLinux: 'drop'
+    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp.zip'
+
+# - task: SonarCloudAnalyze@1
+
+# - task: SonarCloudPublish@1
+#   inputs:
+#     pollingTimeoutSec: '300'
 
 # - script: |
 #     npm install -g @angular/cli
