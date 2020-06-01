@@ -34,7 +34,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'npx ng test --code-coverage'
+    script: 'npx ng test --watch=false --code-coverage'
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
 - task: SonarCloudAnalyze@1
