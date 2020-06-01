@@ -32,11 +32,6 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
-- task: CmdLine@2
-  inputs:
-    script: 'npx ng test --watch=false --browsers=ChromeHeadless --code-coverage'
-    workingDirectory: 'Projects/DeliveryApp/ClientApp'
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
