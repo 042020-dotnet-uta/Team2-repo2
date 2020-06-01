@@ -18,9 +18,3 @@ pool:
   inputs:
     script: 'npx ng build --prod'
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
-
-- script: |
-    npm install -g @angular/cli
-    npm install
-    ng build --prod
-  displayName: 'npm install and build'
