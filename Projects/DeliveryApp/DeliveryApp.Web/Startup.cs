@@ -23,14 +23,24 @@ namespace DeliveryApp.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                //need to ignore json put error .. look up later
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
             //This should now be able to have compatability for the API's we are using
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+
+                //When you get an output of your data.  The field values are default to camelcase per regular json serialization
+                //This nullifies the camel casting and makes the output just like you have defined your in classes
+                //I.E  firstName vs FirstName
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+         
             
             //This is how you connect the DbContext to the DB … ConnectionsString = "DevConnect" is the name we gave in appsettings.json
             services.AddDbContext<DeliveryContext>(options =>

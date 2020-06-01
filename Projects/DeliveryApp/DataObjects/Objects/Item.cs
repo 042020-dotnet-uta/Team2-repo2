@@ -21,6 +21,7 @@ namespace DeliveryApp.Data.Objects
         [Required]
         [RegularExpression(InputValidation.pricePattern, ErrorMessage = InputValidation.priceError)]
         public decimal Price { get; set; }
+        public int CategoryID { get; set; } // This is a navigation property, allows us to acces the Category Property .. below
         public Category Category { get; set; }
         public Item() { }
 
