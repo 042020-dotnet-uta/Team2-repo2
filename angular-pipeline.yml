@@ -31,6 +31,12 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -38,18 +44,4 @@ steps:
     appType: 'webApp'
     WebAppName: 'deliveryclient'
     packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
-
-
-
-# - task: SonarCloudAnalyze@1
-
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
-
-# - script: |
-#     npm install -g @angular/cli
-#     npm install
-#     ng build --prod
-#   displayName: 'npm install and build'
 
