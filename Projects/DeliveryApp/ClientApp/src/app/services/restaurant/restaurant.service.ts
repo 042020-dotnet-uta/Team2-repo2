@@ -3,7 +3,9 @@ import { Restaurant } from '../../models/restaurant';
 import { Inventory } from '../../models/inventory';
 import { Menu } from '../../models/menu';
 import { Category } from '../../models/category';
-import { Product } from '../../models/product';
+import { Item } from '../../models/item';
+
+import { environment } from '../../../environments/environment';
  
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,14 +15,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RestaurantService {
 
-  private menusUrl = 'api/menus';
-  private inventoriesUrl = 'api/inventories';
-  private categoriesUrl = 'api/categories';
-  private productsUrl = 'api/products';
+  private baseUrl = environment.base;
 
-  private restaurauntsUrl = 'api/restaurants';
-  // private url = 'https://localhost:5001/WeatherForecast';
-  // private url = 'https://jsonplaceholder.typicode.com/users';
+  private categories = 'categories';
+  private inventories = 'inventories';
+  private menus = 'menus';
+  private items = 'items';
+  private restaurants = 'restaurants';
+  private users = 'users';
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
                                 'Access-Control-Allow-Origin': '*' })
@@ -28,35 +31,46 @@ export class RestaurantService {
   constructor(private http: HttpClient) { }
 
   getRestaurants(): Observable<Restaurant[]> {
-    return this.http.get<Restaurant[]>(this.restaurauntsUrl);
+    const url = `${this.baseUrl}/${this.restaurants}`;
+    return this.http.get<Restaurant[]>(url);
+  }
+
+  getCategories(): Observable<Category[]> {
+    return null;
+  }
+
+  placeOrder(): Observable<Category[]> {
+    return null;
   }
 
   getMenu(id: number): Observable<Menu> {
-    const url = `${this.menusUrl}/${id}`;
+    const url = `${this.baseUrl}/${this.menus}/${id}`;
     return this.http.get<Menu>(url);
   }
 
   getInventories(restaurant: Restaurant | number): Observable<Inventory[]> {
     const restaurantId = typeof restaurant === 'number' ? restaurant : restaurant.id;
-    const url = `${this.inventoriesUrl}/?restaurantId=${restaurantId}`;
+    const url = `${this.baseUrl}/${this.inventories}/?restaurantId=${restaurantId}`;
     console.log(url);
     return this.http.get<Inventory[]>(url);
   }
 
   addInventory(inventory: Inventory): Observable<Inventory> {
-    return this.http.post<Inventory>(this.inventoriesUrl, inventory, this.httpOptions);
+    const url = `${this.baseUrl}/${this.inventories}`;
+    return this.http.post<Inventory>(url, inventory, this.httpOptions);
   }
 
-  addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.productsUrl, product, this.httpOptions);
+  addItem(item: Item): Observable<Item> {
+    const url = `${this.baseUrl}/${this.items}`;
+    return this.http.post<Item>(url, item, this.httpOptions);
   }
 
-  deleteMenuProduct(menu: Menu | number, category: Category | number, product: Product | number): Observable<Product> {
+  deleteMenuItem(menu: Menu | number, category: Category | number, item: Item | number): Observable<Item> {
     const menuId = typeof menu === 'number' ? menu : menu.id;
     const categoryId = typeof category === 'number' ? category : category.id;
-    const productId = typeof product === 'number' ? product : product.id;
-    const url = `${this.menusUrl}/${menuId}/categories/${categoryId}/products/${productId}`
+    const itemId = typeof item === 'number' ? item : item.id;
+    const url = `${this.baseUrl}/${this.menus}/${menuId}/categories/${categoryId}/items/${itemId}`
 
-    return this.http.delete<Product>(url, this.httpOptions);
+    return this.http.delete<Item>(url, this.httpOptions);
   }
 }

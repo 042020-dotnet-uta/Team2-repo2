@@ -1,14 +1,14 @@
-import { Product } from './product';
+import { Item } from './item';
 import { Restaurant } from './restaurant';
 
 export class Inventory {
     id: number;
     restaurantId: number;
-    product: Product;
+    item: Item;
     quantity: number;
-    constructor(restaurantId: number, product: Product, quantity) {
+    constructor(restaurantId: number, item: Item, quantity) {
         this.restaurantId = restaurantId;
-        this.product = product;
+        this.item = item;
         this.quantity = quantity;
     }
 }

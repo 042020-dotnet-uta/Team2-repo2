@@ -1,34 +1,34 @@
-
-<h4 mat-dialog-title>Configure Device
-<span>
-    <mat-icon (click)="onCloseDialog()">close</mat-icon>
-</span></h4>
-<div mat-dialog-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <mat-tab-group #matgroup dynamicHeight="true">
-            <mat-tab label="Login">
-                <div mat-dialog-content>
-                    <div>
-                        <mat-form-field>
-                            <input matInput formControlName="username" placeholder="Username">
-                        </mat-form-field>
-                        <br>
-                        <mat-form-field>
-                            <input matInput formControlName="password" placeholder="Password">
-                        </mat-form-field>
-                        <mat-dialog-actions>
-                            <button mat-raised-button color="primary" (click)='matgroup.selectedIndex = 1'>Next</button>
-                        </mat-dialog-actions>
-                        <br>
+    <h4 mat-dialog-title>Configure Device
+        <span>
+            <mat-icon (click)="onCloseDialog()">close</mat-icon>
+        </span></h4>
+    <div mat-dialog-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <mat-tab-group #matgroup dynamicHeight="true">
+                <mat-tab label="Login">
+                    <div mat-dialog-content>
+                        <div>
+                            <mat-form-field>
+                                <input matInput formControlName="username" placeholder="Username">
+                            </mat-form-field>
+                            <br>
+                            <mat-form-field>
+                                <input matInput formControlName="password" placeholder="Password">
+                            </mat-form-field>
+                            <mat-dialog-actions>
+                                <button mat-raised-button color="primary"
+                                    (click)='matgroup.selectedIndex = 1'>Next</button>
+                            </mat-dialog-actions>
+                            <br>
+                        </div>
                     </div>
-                </div>
-            </mat-tab>
-            <mat-tab label="Register">
-                <div mat-dialog-content>
-                    <p>What's your favorite animal?</p>
-                      <mat-label>Favorite Animal</mat-label>
-                  </div>
-                <!-- <div class="tab-content" style="height: 140px">
+                </mat-tab>
+                <mat-tab label="Register">
+                    <div mat-dialog-content>
+                        <p>What's your favorite animal?</p>
+                        <mat-label>Favorite Animal</mat-label>
+                    </div>
+                    <!-- <div class="tab-content" style="height: 140px">
     
                     <div class="content-container">
                         <mat-form-field>
@@ -49,7 +49,7 @@
                         <button mat-raised-button color="primary" (click)='matgroup.selectedIndex = 0'>Back</button>
                     </mat-dialog-actions>
                 </div> -->
-            </mat-tab>
-        </mat-tab-group>
-    </form>
-</div>
+                </mat-tab>
+            </mat-tab-group>
+        </form>
+    </div>
