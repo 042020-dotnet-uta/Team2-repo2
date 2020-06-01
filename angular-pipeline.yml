@@ -43,8 +43,7 @@ steps:
 
 # perform unit-tets and publish test and code coverage results
 - script: |
-    npx ng test --watch=false --browsers=ChromeHeadless --karmaConfig karma.conf.js --code-coverage
-  displayName: 'perform unit tests'   
+    npx ng test --watch=false --code-coverage
   workingDirectory: 'Projects/DeliveryApp/ClientApp' 
 
 - task: PublishTestResults@2
@@ -52,12 +51,11 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TESTS-*.xml'
-  displayName: 'publish unit test results'
 
 - task: PublishCodeCoverageResults@1
   displayName: 'publish code coverage report'
   condition: succeededOrFailed()
   inputs:
     codeCoverageTool: Cobertura
-    summaryFileLocation: '$(Build.SourcesDirectory)/coverage/cobertura-coverage.xml'
+    summaryFileLocation: 'Projects/DeliveryApp/ClientApp/coverage/cobertura-coverage.xml'
     failIfCoverageEmpty: true  
