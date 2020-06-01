@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerComponent implements OnInit {
 
   constructor() { }
+  showNav: true;
 
   ngOnInit(): void {
   }

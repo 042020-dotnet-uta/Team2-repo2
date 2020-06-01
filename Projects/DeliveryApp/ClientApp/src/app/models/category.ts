@@ -1,8 +1,9 @@
-import { Product } from './product';
+import { Item } from './item';
+import { Restaurant } from './restaurant';
 
 export interface Category {
     id: number;
-    menuId: number;
     name: string;
-    products?: Product[];
+    description: string;
+    restaurant: Restaurant;
 }

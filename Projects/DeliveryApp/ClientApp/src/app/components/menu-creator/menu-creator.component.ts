@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { RestaurantService } from '../../services/restaurant/restaurant.service';
 import { Inventory } from '../../models/inventory';
 import { Menu } from '../../models/menu';
-import { Product } from '../../models/product';
+import { Item } from '../../models/item';
 import { Category } from '../../models/category';
 
 @Component({
@@ -17,8 +17,8 @@ export class MenuCreatorComponent implements OnInit {
   inventories: Inventory[];
   categories: Category[];
   category: Category;
-  products: Product[];
-  product: Product;
+  items: Item[];
+  item: Item;
 
   constructor(private service: RestaurantService) {
   }
@@ -36,9 +36,9 @@ export class MenuCreatorComponent implements OnInit {
     this.service.getInventories(id).subscribe(inventories => this.inventories = inventories);
   }
 
-  delete(menu: Menu, categoryIndex: number, category: Category, productIndex: number, product: Product): void {
-    this.menu.categories[categoryIndex].products = this.menu.categories[categoryIndex].products.filter(p => p !== product);
-    this.service.deleteMenuProduct(menu, this.menu.categories[categoryIndex], product).subscribe();
+  delete(menu: Menu, categoryIndex: number, category: Category, itemIndex: number, item: Item): void {
+    // this.menu.categories[categoryIndex].items = this.menu.categories[categoryIndex].items.filter(p => p !== item);
+    this.service.deleteMenuItem(menu, this.menu.categories[categoryIndex], item).subscribe();
   }
 
   add(menu: Menu, categoryIndex: number, category: Category) {
