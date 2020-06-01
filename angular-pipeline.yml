@@ -3,13 +3,16 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- master
+# trigger:
+# - master
 
 pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- script :
+  workingDirectory: 'Projects/DeliveryApp/ClientApp'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
