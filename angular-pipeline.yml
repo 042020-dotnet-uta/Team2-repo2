@@ -37,12 +37,6 @@ steps:
     script: 'npx ng test --watch=false --browsers=ChromeHeadless --code-coverage'
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
-
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
