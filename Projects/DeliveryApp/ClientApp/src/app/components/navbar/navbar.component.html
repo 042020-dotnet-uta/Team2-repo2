@@ -1,8 +1,10 @@
 <mat-toolbar>
 <mat-toolbar-row>
-    <span>Third Line</span>
+    <span>Foodie to me</span>
     <span class="example-spacer"></span>
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
+    <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+    <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
   </mat-toolbar-row>
 </mat-toolbar>

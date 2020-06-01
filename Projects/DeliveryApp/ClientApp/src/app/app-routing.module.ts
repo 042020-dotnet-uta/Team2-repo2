@@ -9,6 +9,7 @@ import { MenuCreatorComponent } from '../../src/app/components/menu-creator/menu
 import { RestaurantComponent } from '../../src/app/components/restaurant/restaurant.component';
 import { RestaurantsComponent } from '../../src/app/components/restaurants/restaurants.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
+import { NavbarComponent } from '../../src/app/components/navbar/navbar.component'; 
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'driver', component: DriverComponent },
   { path: 'restaurant', component: RestaurantComponent },
   { path: 'restaurants', component: RestaurantsComponent },
+  { path: 'navbar', component: NavbarComponent },
   { path: 'restaurants/:id', component: OrderCreateComponent },
   { path: 'menu-creator', component: MenuCreatorComponent }
 ];
