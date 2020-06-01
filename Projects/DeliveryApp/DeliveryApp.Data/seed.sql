@@ -9,7 +9,11 @@ DBCC CHECKIDENT (Items, RESEED, 0);
 insert into Restaurants (
 Name,
 Description) 
-VALUES ('Chef Zorba''s', 'Since 1979, Chef Zorba''s Restaurant, located in the tiny business district on East 12th Avenue, has been a favorite gathering spot for Congress Park neighbors and food lovers throughout the city');
+VALUES 
+('Chef Zorba''s', 'Since 1979, Chef Zorba''s Restaurant, located in the tiny business district on East 12th Avenue, has been a favorite gathering spot for Congress Park neighbors and food lovers throughout the city'),
+('Shell''s & Sauce', ''),
+('Peter''s Chinese', ''),
+('Thai Basil', '');
 
 insert into Categories (
 Name,
