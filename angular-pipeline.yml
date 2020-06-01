@@ -29,6 +29,7 @@ steps:
     script: |
       npm install -g @angular/cli
       npm install
+      npm install @auth0/auth0-spa-js --save
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
