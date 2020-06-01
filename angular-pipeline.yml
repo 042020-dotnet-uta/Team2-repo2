@@ -10,12 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'dariusSonarCloud'
-    organization: 'team-2'
-    scannerMode: 'MSBuild'
-    projectKey: 'project-2-client'
+
 
 - task: NodeTool@0
   inputs:
@@ -30,6 +25,15 @@ steps:
       npm install @auth0/auth0-spa-js
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
+
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'dariusSonarCloud'
+    organization: 'team-2'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'project-2-client'
+    cliSources: 'Projects/DeliveryApp/ClientApp'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
