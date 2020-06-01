@@ -29,15 +29,17 @@ steps:
       npm install -g @angular/cli
       npm install
       ng build --prod
-    workingDirectory: '$(System.DefaultWorkingDirectory)/Projects/DeliveryApp/ClientApp'
+    workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
-    appType: 'webAppLinux'
+    appType: 'webApp'
     WebAppName: 'deliveryclient'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/Projects/DeliveryApp/ClientApp/dist/ClientApp'
+    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
+
+
 
 # - task: SonarCloudAnalyze@1
 
