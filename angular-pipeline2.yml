@@ -23,6 +23,14 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
+    appType: 'webAppLinux'
+    WebAppName: 'deliveryclient'
+    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist'
+
 # - script: |
 #     npm install -g @angular/cli
 #     npm install
