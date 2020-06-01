@@ -16,10 +16,11 @@ pool:
 
 - task: CmdLine@2
   inputs:
-    script: 'npm install Projects/DeliveryApp/ClientApp'
+    script: 'npx ng build --prod'
+    workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
-# - script: |
-#     npm install -g @angular/cli
-#     npm install
-#     ng build --prod
-#   displayName: 'npm install and build'
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
