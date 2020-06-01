@@ -9,6 +9,14 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'dariusSonarCloud'
+    organization: 'team-2'
+    scannerMode: 'MSBuild'
+    projectKey: 'project-2-client'
+    projectName: 'project-2-client'
+
 steps:
 - task: NodeTool@0
   inputs:
@@ -30,6 +38,12 @@ steps:
     appType: 'webAppLinux'
     WebAppName: 'deliveryclient'
     packageForLinux: 'Projects/DeliveryApp/ClientApp/dist'
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
 
 # - script: |
 #     npm install -g @angular/cli
