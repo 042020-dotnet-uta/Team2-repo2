@@ -46,5 +46,5 @@ steps:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
     appType: 'webApp'
-    WebAppName: 'DariusVallejoPipelineDemo'
+    WebAppName: 'deliveryserver'
     packageForLinux: '$(System.DefaultWorkingDirectory)/Projects/DeliveryApp/DeliveryApp.Web/bin/Debug/netcoreapp3.1/publish.zip'
