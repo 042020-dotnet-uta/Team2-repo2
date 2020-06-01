@@ -31,22 +31,23 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
     appType: 'webAppLinux'
     WebAppName: 'deliveryclient'
-    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
-
-- task: SonarCloudAnalyze@1
-
-- task: SonarCloudPublish@1
-  inputs:
-    pollingTimeoutSec: '300'
+    packageForLinux: 'drop'
 
 # - script: |
 #     npm install -g @angular/cli
 #     npm install
 #     ng build --prod
 #   displayName: 'npm install and build'
+
