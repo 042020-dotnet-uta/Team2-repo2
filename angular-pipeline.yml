@@ -34,6 +34,11 @@ steps:
     configMode: 'manual'
     cliProjectKey: 'project-2-client'
     cliSources: 'Projects/DeliveryApp/ClientApp'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.junit.reportPaths=Projects/DeliveryApp/ClientApp/junit
 
 - task: AzureRmWebAppDeployment@4
   inputs:
