@@ -37,7 +37,7 @@ steps:
     azureSubscription: 'Azure subscription 1(acbdb889-c08c-4425-a91a-f10d904bc1ea)'
     appType: 'webAppLinux'
     WebAppName: 'deliveryclient'
-    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist'
+    packageForLinux: 'Projects/DeliveryApp/ClientApp/dist/ClientApp'
 
 - task: SonarCloudAnalyze@1
 
