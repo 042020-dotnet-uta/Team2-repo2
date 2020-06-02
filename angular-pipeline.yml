@@ -38,8 +38,10 @@ steps:
       # Additional properties that will be passed to the scanner, 
       # Put one key=value per line, example:
       # sonar.exclusions=**/*.bin
-      sonar.junit.reportPaths=Projects/DeliveryApp/ClientApp/junit
-
+      sonar.sources=Projects/DeliveryApp/ClientApp
+      sonar.tests=Projects/DeliveryApp/ClientApp
+      sonar.test.inclusions=**/*.spec.ts
+      sonar.typescript.lcov.reportPaths=Projects/DeliveryApp/ClientApp/coverage/lcov.info
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
