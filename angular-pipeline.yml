@@ -10,14 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: SonarCloudPrepare@1
-  inputs:
-    SonarCloud: 'dariusSonarCloud'
-    organization: 'team-2'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'project-2-client'
-    cliSources: 'Project/DeliveryApp/ClientApp'
+
 
 - task: NodeTool@0
   inputs:
@@ -33,6 +26,22 @@ steps:
       ng build --prod
     workingDirectory: 'Projects/DeliveryApp/ClientApp'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'dariusSonarCloud'
+    organization: 'team-2'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'project-2-client'
+    cliSources: 'Projects/DeliveryApp/ClientApp'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.sources=Projects/DeliveryApp/ClientApp
+      sonar.tests=Projects/DeliveryApp/ClientApp
+      sonar.test.inclusions=**/*.spec.ts
+      sonar.typescript.lcov.reportPaths=Projects/DeliveryApp/ClientApp/coverage/lcov.info
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
@@ -43,8 +52,7 @@ steps:
 
 # perform unit-tets and publish test and code coverage results
 - script: |
-    npx ng test --watch=false --browsers=ChromeHeadless --karmaConfig karma.conf.js --code-coverage
-  displayName: 'perform unit tests'   
+    npx ng test --watch=false --code-coverage
   workingDirectory: 'Projects/DeliveryApp/ClientApp' 
 
 - task: PublishTestResults@2
@@ -52,12 +60,17 @@ steps:
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TESTS-*.xml'
-  displayName: 'publish unit test results'
 
 - task: PublishCodeCoverageResults@1
   displayName: 'publish code coverage report'
   condition: succeededOrFailed()
   inputs:
     codeCoverageTool: Cobertura
-    summaryFileLocation: '$(Build.SourcesDirectory)/coverage/cobertura-coverage.xml'
+    summaryFileLocation: 'Projects/DeliveryApp/ClientApp/coverage/cobertura-coverage.xml'
     failIfCoverageEmpty: true  
+
+- task: SonarCloudAnalyze@1
+
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
