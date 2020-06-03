@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  auth: AuthService;
   // Create an observable of Auth0 instance of client
   auth0Client$ = (from(
     createAuth0Client({
@@ -53,6 +54,40 @@ export class AuthService {
       concatMap((client: Auth0Client) => from(client.getUser(options))),
       tap(user => this.userProfileSubject$.next(user))
     );
+  }
+  
+  // to use this
+  // 1) import AuthService and inject it publicly in your component
+  // 2) in OnInit create an email variable to store it so it can be used when needed
+  // 3) create a getEmail in your component
+  //      getEmail(){
+  //        this.email = this.auth.getEmail();
+  //      }
+  // 4) use variable when needed
+  getEmail(): string {
+    let all = JSON.stringify(this.userProfile$);
+    let email = "";
+    for(let i = 0; i < all.length; i++){
+      if(all[i] == "\""){
+        let sub = all.substring(i+1,i+6);
+        let count = i+9;
+        let em = "";
+        if(sub == "email"){
+          while(true){
+            if(all[count] == "\""){
+              break;
+            }
+            else{
+              em = em + all[count]
+              count++;
+            }
+          }
+          email = em;
+          break;
+        }
+      }
+    }
+    return email;
   }
 
   private localAuthSetup() {

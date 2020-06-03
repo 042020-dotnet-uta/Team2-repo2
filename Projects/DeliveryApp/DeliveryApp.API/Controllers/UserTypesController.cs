@@ -7,62 +7,53 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DeliveryApp.Data;
 using DeliveryApp.Data.Objects;
-using System.Linq.Expressions;
 
 namespace DeliveryApp.Web.ApiController
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    [Route("api/[controller]/[action]")] //Attribute Routing
+    public class UserTypesController : ControllerBase
     {
         private readonly DeliveryContext _context;
 
-        public CategoriesController(DeliveryContext context)
+        public UserTypesController(DeliveryContext context)
         {
             _context = context;
         }
 
-        // GET: api/Categories
+        // GET: api/UserTypes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<UserType>>> GetUserTypes()
         {
-            try
-            {
-                return await _context.Categories.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return await _context.UserTypes.ToListAsync();
         }
 
-        // GET: api/Categories/5
+        // GET: api/UserTypes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<UserType>> GetUserType(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var userType = await _context.UserTypes.FindAsync(id);
 
-            if (category == null)
+            if (userType == null)
             {
                 return NotFound();
             }
 
-            return category;
+            return userType;
         }
 
-        // PUT: api/Categories/5
+        // PUT: api/UserTypes/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutUserType(int id, UserType userType)
         {
-            if (id != category.ID)
+            if (id != userType.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(userType).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +61,7 @@ namespace DeliveryApp.Web.ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!UserTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -83,38 +74,37 @@ namespace DeliveryApp.Web.ApiController
             return NoContent();
         }
 
-        // POST: api/Categories
+        // POST: api/UserTypes
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<UserType>> PostUserType(UserType userType)
         {
-            _context.Categories.Add(category);
+            _context.UserTypes.Add(userType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.ID }, category);
+            return CreatedAtAction("GetUserType", new { id = userType.ID }, userType);
         }
 
-        // DELETE: api/Categories/5
+        // DELETE: api/UserTypes/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<ActionResult<UserType>> DeleteUserType(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var userType = await _context.UserTypes.FindAsync(id);
+            if (userType == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.UserTypes.Remove(userType);
             await _context.SaveChangesAsync();
 
-            return category;
+            return userType;
         }
 
-        public bool CategoryExists(int id)
+        private bool UserTypeExists(int id)
         {
-            //Checks if the id being passed matches the id in the DB (t/f)
-            return _context.Categories.Any(e => e.ID == id);
+            return _context.UserTypes.Any(e => e.ID == id);
         }
     }
 }

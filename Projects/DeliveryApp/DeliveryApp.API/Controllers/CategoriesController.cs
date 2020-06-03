@@ -11,8 +11,8 @@ using System.Linq.Expressions;
 
 namespace DeliveryApp.Web.ApiController
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]/[action]")] //Attribute Routing
     public class CategoriesController : ControllerBase
     {
         private readonly DeliveryContext _context;
@@ -26,15 +26,7 @@ namespace DeliveryApp.Web.ApiController
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            try
-            {
-                return await _context.Categories.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return await _context.Categories.ToListAsync();
         }
 
         // GET: api/Categories/5
@@ -51,37 +43,30 @@ namespace DeliveryApp.Web.ApiController
             return category;
         }
 
-        // PUT: api/Categories/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
-        {
-            if (id != category.ID)
-            {
-                return BadRequest();
-            }
+         // PUT: api/Categories/5
+         // To protect from overposting attacks, enable the specific properties you want to bind to, for
+         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+         [HttpPut("{id}")]
+         public async Task<IActionResult> PutCategory(int id, Category category)
+         {
+             if (id != category.ID)
+             {
+                 return BadRequest();
+             }
 
-            _context.Entry(category).State = EntityState.Modified;
+             _context.Entry(category).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+             try
+             {
+                 await _context.SaveChangesAsync();
+             }
+             catch (DbUpdateConcurrencyException)
+             {
+                throw; ;
+             }
 
-            return NoContent();
-        }
+             return NoContent();
+         }
 
         // POST: api/Categories
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -110,11 +95,12 @@ namespace DeliveryApp.Web.ApiController
 
             return category;
         }
-
+        /*
         public bool CategoryExists(int id)
         {
             //Checks if the id being passed matches the id in the DB (t/f)
             return _context.Categories.Any(e => e.ID == id);
         }
+        */
     }
 }

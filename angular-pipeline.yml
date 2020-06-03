@@ -55,19 +55,19 @@ steps:
     npx ng test --watch=false --code-coverage
   workingDirectory: 'Projects/DeliveryApp/ClientApp' 
 
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TESTS-*.xml'
+# - task: PublishTestResults@2
+#   condition: succeededOrFailed()
+#   inputs:
+#     testResultsFormat: 'JUnit'
+#     testResultsFiles: '**/TESTS-*.xml'
 
-- task: PublishCodeCoverageResults@1
-  displayName: 'publish code coverage report'
-  condition: succeededOrFailed()
-  inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: 'Projects/DeliveryApp/ClientApp/coverage/cobertura-coverage.xml'
-    failIfCoverageEmpty: true  
+# - task: PublishCodeCoverageResults@1
+#   displayName: 'publish code coverage report'
+#   condition: succeededOrFailed()
+#   inputs:
+#     codeCoverageTool: Cobertura
+#     summaryFileLocation: 'Projects/DeliveryApp/ClientApp/coverage/cobertura-coverage.xml'
+#     failIfCoverageEmpty: true  
 
 - task: SonarCloudAnalyze@1
 

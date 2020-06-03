@@ -6,5 +6,7 @@
     <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
     <button (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
     <button (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+    <button (click)="getEmail()" *ngIf="auth.loggedIn">Show Email</button>
+    <p *ngIf="email">{{email}}</p>
   </mat-toolbar-row>
 </mat-toolbar>
