@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeliveryApp.Data.Migrations
 {
     [DbContext(typeof(DeliveryContext))]
-    [Migration("20200529205422_test1")]
-    partial class test1
+    [Migration("20200603135936_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,16 +44,11 @@ namespace DeliveryApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserID")
-                        .HasColumnType("int");
-
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("UserID");
 
                     b.ToTable("Addresses");
                 });
@@ -102,7 +97,7 @@ namespace DeliveryApp.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(7,2)");
 
                     b.HasKey("ID");
 
@@ -172,13 +167,13 @@ namespace DeliveryApp.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ReasonID")
+                    b.Property<int>("ReasonID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserID")
+                    b.Property<int>("UserID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -239,6 +234,9 @@ namespace DeliveryApp.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AddressID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -249,6 +247,8 @@ namespace DeliveryApp.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("AddressID");
+
                     b.ToTable("Restaurants");
                 });
 
@@ -258,6 +258,9 @@ namespace DeliveryApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AddressID")
+                        .HasColumnType("int");
 
                     b.Property<string>("FName")
                         .IsRequired()
@@ -271,10 +274,12 @@ namespace DeliveryApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserTypeID")
+                    b.Property<int>("UserTypeID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AddressID");
 
                     b.HasIndex("UserTypeID");
 
@@ -299,13 +304,6 @@ namespace DeliveryApp.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("UserTypes");
-                });
-
-            modelBuilder.Entity("DeliveryApp.Data.Objects.Address", b =>
-                {
-                    b.HasOne("DeliveryApp.Data.Objects.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("DeliveryApp.Data.Objects.Category", b =>
@@ -356,11 +354,15 @@ namespace DeliveryApp.Data.Migrations
                 {
                     b.HasOne("DeliveryApp.Data.Objects.OrderAssignmentReason", "Reason")
                         .WithMany()
-                        .HasForeignKey("ReasonID");
+                        .HasForeignKey("ReasonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DeliveryApp.Data.Objects.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DeliveryApp.Data.Objects.OrderItem", b =>
@@ -374,11 +376,24 @@ namespace DeliveryApp.Data.Migrations
                         .HasForeignKey("OrderID");
                 });
 
+            modelBuilder.Entity("DeliveryApp.Data.Objects.Restaurant", b =>
+                {
+                    b.HasOne("DeliveryApp.Data.Objects.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressID");
+                });
+
             modelBuilder.Entity("DeliveryApp.Data.Objects.User", b =>
                 {
+                    b.HasOne("DeliveryApp.Data.Objects.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressID");
+
                     b.HasOne("DeliveryApp.Data.Objects.UserType", "UserType")
                         .WithMany()
-                        .HasForeignKey("UserTypeID");
+                        .HasForeignKey("UserTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

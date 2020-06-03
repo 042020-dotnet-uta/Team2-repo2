@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DeliveryApp.Data.Objects
@@ -20,8 +21,9 @@ namespace DeliveryApp.Data.Objects
         public string Description { get; set; }
         [Required]
         [RegularExpression(InputValidation.pricePattern, ErrorMessage = InputValidation.priceError)]
+        [Column(TypeName = "decimal(7,2)")]
         public decimal Price { get; set; }
-        public int CategoryID { get; set; } // This is a navigation property, allows us to acces the Category Property .. below
+        //public int CategoryID { get; set; } // This is a navigation property, allows us to acces the Category Property .. below
         public Category Category { get; set; }
         public Item() { }
 

@@ -13,6 +13,18 @@
     <Compile Remove="Migrations\20200527195802_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20200527200033_InitialCreate.cs" />
     <Compile Remove="Migrations\20200527200033_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200527200428_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200527200428_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200529205422_test1.cs" />
+    <Compile Remove="Migrations\20200529205422_test1.Designer.cs" />
+    <Compile Remove="Migrations\20200603134150_AddingAddressObjects.cs" />
+    <Compile Remove="Migrations\20200603134150_AddingAddressObjects.Designer.cs" />
+    <Compile Remove="Migrations\20200603134721_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200603134721_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200603134942_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200603134942_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200603135347_InitialCreate.cs" />
+    <Compile Remove="Migrations\20200603135347_InitialCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,6 +18,7 @@ namespace DeliveryApp.Data.Objects
         [DisplayName("Restaurant Description")]
         [RegularExpression(InputValidation.descriptionPattern, ErrorMessage = InputValidation.descriptionError)]
         public string Description { get; set; }
+        public Address Address { get; set; }
         public Restaurant() { }
 
     }
