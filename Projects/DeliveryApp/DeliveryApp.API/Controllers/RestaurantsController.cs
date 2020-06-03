@@ -7,62 +7,53 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DeliveryApp.Data;
 using DeliveryApp.Data.Objects;
-using System.Linq.Expressions;
 
 namespace DeliveryApp.Web.ApiController
 {
-    [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    [Route("api/[controller]/[action]")] //Attribute Routing
+    public class RestaurantsController : ControllerBase
     {
         private readonly DeliveryContext _context;
 
-        public CategoriesController(DeliveryContext context)
+        public RestaurantsController(DeliveryContext context)
         {
             _context = context;
         }
 
-        // GET: api/Categories
+        // GET: api/Restaurants
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
         {
-            try
-            {
-                return await _context.Categories.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return await _context.Restaurants.ToListAsync();
         }
 
-        // GET: api/Categories/5
+        // GET: api/Restaurants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var restaurant = await _context.Restaurants.FindAsync(id);
 
-            if (category == null)
+            if (restaurant == null)
             {
                 return NotFound();
             }
 
-            return category;
+            return restaurant;
         }
 
-        // PUT: api/Categories/5
+        // PUT: api/Restaurants/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutRestaurant(int id, Restaurant restaurant)
         {
-            if (id != category.ID)
+            if (id != restaurant.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(restaurant).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +61,7 @@ namespace DeliveryApp.Web.ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!RestaurantExists(id))
                 {
                     return NotFound();
                 }
@@ -83,38 +74,37 @@ namespace DeliveryApp.Web.ApiController
             return NoContent();
         }
 
-        // POST: api/Categories
+        // POST: api/Restaurants
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
         {
-            _context.Categories.Add(category);
+            _context.Restaurants.Add(restaurant);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.ID }, category);
+            return CreatedAtAction("GetRestaurant", new { id = restaurant.ID }, restaurant);
         }
 
-        // DELETE: api/Categories/5
+        // DELETE: api/Restaurants/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<ActionResult<Restaurant>> DeleteRestaurant(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var restaurant = await _context.Restaurants.FindAsync(id);
+            if (restaurant == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Restaurants.Remove(restaurant);
             await _context.SaveChangesAsync();
 
-            return category;
+            return restaurant;
         }
 
-        public bool CategoryExists(int id)
+        private bool RestaurantExists(int id)
         {
-            //Checks if the id being passed matches the id in the DB (t/f)
-            return _context.Categories.Any(e => e.ID == id);
+            return _context.Restaurants.Any(e => e.ID == id);
         }
     }
 }
