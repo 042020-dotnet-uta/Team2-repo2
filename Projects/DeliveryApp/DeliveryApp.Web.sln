@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryApp.Test", "Deliver
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryApp.Data", "DeliveryApp.Data\DeliveryApp.Data.csproj", "{86F7B960-0DDB-4922-9DFC-0159F2660E20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryApp.API", "DeliveryApp.API\DeliveryApp.API.csproj", "{63B8D26C-3D96-4E2B-85A9-748A7F09495F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{86F7B960-0DDB-4922-9DFC-0159F2660E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F7B960-0DDB-4922-9DFC-0159F2660E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F7B960-0DDB-4922-9DFC-0159F2660E20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63B8D26C-3D96-4E2B-85A9-748A7F09495F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63B8D26C-3D96-4E2B-85A9-748A7F09495F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63B8D26C-3D96-4E2B-85A9-748A7F09495F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63B8D26C-3D96-4E2B-85A9-748A7F09495F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

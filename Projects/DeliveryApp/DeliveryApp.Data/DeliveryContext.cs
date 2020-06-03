@@ -31,8 +31,10 @@ namespace DeliveryApp.Data
             if (!options.IsConfigured)
             {
                 // TODO Move to some properties file?
-                // options.UseSqlServer("Server=tcp:ryanoxford.database.windows.net,1433;Initial Catalog=DeliveryApp;Persist Security Info=False;User ID=ryanoxford;Password=PickledTubas!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                options.UseSqlServer("Server=DESKTOP-KGITG3T;Database=DeliveryAppTestDB-1;Trusted_Connection=True;MultipleActiveResultSets=true");
+                 options.UseSqlServer("Server=tcp:ryanoxford.database.windows.net,1433;Initial Catalog=DeliveryApp;Persist Security Info=False;User ID=ryanoxford;Password=PickledTubas!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                
+                
+                //--- My Local Server    options.UseSqlServer("Server=DESKTOP-KGITG3T;Database=Test_DeliveryApp;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

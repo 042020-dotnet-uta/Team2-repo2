@@ -7,62 +7,54 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DeliveryApp.Data;
 using DeliveryApp.Data.Objects;
-using System.Linq.Expressions;
 
 namespace DeliveryApp.Web.ApiController
 {
-    [Route("api/[controller]")]
+
     [ApiController]
-    public class CategoriesController : ControllerBase
+    [Route("api/[controller]/[action]")] //Attribute Routing
+    public class AddressesController : ControllerBase
     {
         private readonly DeliveryContext _context;
 
-        public CategoriesController(DeliveryContext context)
+        public AddressesController(DeliveryContext context)
         {
             _context = context;
         }
 
-        // GET: api/Categories
+        // GET: api/Addresses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<Address>>> GetAddresses()
         {
-            try
-            {
-                return await _context.Categories.ToListAsync();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            return await _context.Addresses.ToListAsync();
         }
 
-        // GET: api/Categories/5
+        // GET: api/Addresses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<Address>> GetAddress(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var address = await _context.Addresses.FindAsync(id);
 
-            if (category == null)
+            if (address == null)
             {
                 return NotFound();
             }
 
-            return category;
+            return address;
         }
 
-        // PUT: api/Categories/5
+        // PUT: api/Addresses/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutAddress(int id, Address address)
         {
-            if (id != category.ID)
+            if (id != address.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(address).State = EntityState.Modified;
 
             try
             {
@@ -70,7 +62,7 @@ namespace DeliveryApp.Web.ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!AddressExists(id))
                 {
                     return NotFound();
                 }
@@ -83,38 +75,37 @@ namespace DeliveryApp.Web.ApiController
             return NoContent();
         }
 
-        // POST: api/Categories
+        // POST: api/Addresses
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Address>> PostAddress(Address address)
         {
-            _context.Categories.Add(category);
+            _context.Addresses.Add(address);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.ID }, category);
+            return CreatedAtAction("GetAddress", new { id = address.ID }, address);
         }
 
-        // DELETE: api/Categories/5
+        // DELETE: api/Addresses/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        public async Task<ActionResult<Address>> DeleteAddress(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var address = await _context.Addresses.FindAsync(id);
+            if (address == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Addresses.Remove(address);
             await _context.SaveChangesAsync();
 
-            return category;
+            return address;
         }
 
-        public bool CategoryExists(int id)
+        private bool AddressExists(int id)
         {
-            //Checks if the id being passed matches the id in the DB (t/f)
-            return _context.Categories.Any(e => e.ID == id);
+            return _context.Addresses.Any(e => e.ID == id);
         }
     }
 }

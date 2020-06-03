@@ -10,8 +10,8 @@ using DeliveryApp.Data.Objects;
 
 namespace DeliveryApp.Web.ApiController
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]/[action]")] //Attribute Routing
     public class OrderAssignmentReasonsController : ControllerBase
     {
         private readonly DeliveryContext _context;
@@ -61,14 +61,15 @@ namespace DeliveryApp.Web.ApiController
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!OrderAssignmentReasonExists(id))
+                /*if (!OrderAssignmentReasonExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
                     throw;
-                }
+                }*/
+                throw;
             }
 
             return NoContent();
@@ -107,15 +108,15 @@ namespace DeliveryApp.Web.ApiController
             return _context.OrderAssignmentReasons.Any(e => e.ID == id);
         }
 
-        
+
         //This post method is only returning object of created on stuff so this method will be use for API Test
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<OrderAssignmentReason>> PostOrderAssignmentReasonForAPITest(OrderAssignmentReason orderAssignmentReason)
         {
             _context.OrderAssignmentReasons.Add(orderAssignmentReason);
             await _context.SaveChangesAsync();  //save() vs SaveChangesAsync() ... b/c we are using async ... match the pair .... one or teh other
 
             return orderAssignmentReason;
-        }
+        }*/
     }
 }
