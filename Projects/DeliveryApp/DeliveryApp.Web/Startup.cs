@@ -41,7 +41,7 @@ namespace DeliveryApp.Web
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // TODO: Remove this when securing controller access
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             if (env.IsDevelopment())
             {

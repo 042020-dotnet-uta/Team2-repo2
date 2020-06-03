@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AgmCoreModule } from '@agm/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -27,7 +28,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RestaurantsComponent } from './components/restaurants/restaurants.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
-import { MenuCreatorComponent } from './components/menu-creator/menu-creator.component';
+import { MenuCreatorComponent, MenuCreatorDialogComponent } from './components/menu-creator/menu-creator.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
@@ -46,6 +47,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     RestaurantsComponent,
     HeaderComponent,
     MenuCreatorComponent,
+    MenuCreatorDialogComponent,
     DialogComponent,
     CustomerComponent,
     OrderCreateComponent,
@@ -62,6 +64,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     //   InMemoryDataService, { dataEncapsulation: false }
     // ),
     ReactiveFormsModule,
+    MatCheckboxModule,
     MatGridListModule,
     MatPaginatorModule,
     AgmCoreModule,
@@ -83,6 +86,6 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [MatDialogModule]
 })
 export class AppModule { }

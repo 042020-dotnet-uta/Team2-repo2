@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { Router } from '@angular/router';
 
-import { RedirectService } from '../../services/redirect/redirect.service';
+import { DataService } from '../../services/data/data.service';
 
 import { User } from '../../models/user';
 
@@ -19,7 +19,10 @@ export class HomeComponent {
   dialogRef: MatDialogRef<DialogComponent>;
   search: string;
 
-  constructor(fb: FormBuilder, private router: Router, private dialog: MatDialog, private service: RedirectService) {
+  constructor(fb: FormBuilder, 
+              private router: Router, 
+              private dialog: MatDialog, 
+              private service: DataService) {
     this.searchForm = fb.group({ 
       search: ''
     });
@@ -49,13 +52,9 @@ export class HomeComponent {
       this.router.navigateByUrl('/restaurant') });
   }
 
-  
-
   onSubmit() {
-    console.log(this.searchForm.value.search);
-    this.service.restaurantNameSearch(this.searchForm.value.search).subscribe(result => {
+    this.service.setData(this.searchForm.value.search).subscribe(result => {
       this.search = result;
-      this.service.search = this.search;
       this.router.navigateByUrl('/restaurants');
     });
   }
