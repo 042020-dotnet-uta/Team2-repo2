@@ -5,6 +5,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { Router } from '@angular/router';
 
 import { DataService } from '../../services/data/data.service';
+import { AuthService } from '../../auth.service';
 
 import { User } from '../../models/user';
 
@@ -18,14 +19,24 @@ export class HomeComponent {
   searchForm: FormGroup;
   dialogRef: MatDialogRef<DialogComponent>;
   search: string;
+  email: string;
 
   constructor(fb: FormBuilder, 
               private router: Router, 
               private dialog: MatDialog, 
-              private service: DataService) {
+              private service: DataService,
+              public auth: AuthService) {
     this.searchForm = fb.group({ 
       search: ''
     });
+  }
+
+  getEmail(){
+    this.email = this.auth.getEmail();
+    this.sayEmail();
+  }
+  sayEmail(){
+    alert(this.email);
   }
 
   openCustomerDialog() {

@@ -8,9 +8,17 @@ import { AuthService } from '../../auth.service';
 })
 export class NavbarComponent implements OnInit {
   showNav: boolean;
+  email: string;
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  getEmail(){
+    this.email = this.auth.getEmail();
+  }
+  
+  sayEmail(){
+    alert(this.email);
+  }
 }
