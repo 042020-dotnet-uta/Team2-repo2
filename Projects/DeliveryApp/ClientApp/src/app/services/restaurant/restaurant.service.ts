@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Restaurant } from '../../models/restaurant';
-import { Menu } from '../../models/menu';
+
 import { Category } from '../../models/category';
 import { Item } from '../../models/item';
+import { Menu } from '../../models/menu';
+import { Order } from '../../models/order';
+import { Restaurant } from '../../models/restaurant';
 
 import { environment } from '../../../environments/environment';
  
@@ -17,8 +19,9 @@ export class RestaurantService {
   private baseUrl = environment.base;
 
   private categories = 'categories';
-  private menus = 'menus';
   private items = 'items';
+  private menus = 'menus';
+  private orders = 'orders';
   private restaurants = 'restaurants';
   private users = 'users';
 
@@ -77,6 +80,10 @@ export class RestaurantService {
     return this.http.post<Item>(url, item, this.httpOptions);
   }
 
+  addOrder(order: Order): Observable<Order> {
+    const url = `${this.baseUrl}/${this.orders}`;
+    return this.http.post<Order>(url, order, this.httpOptions);
+  }
 
 
 

@@ -6,34 +6,30 @@
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
         <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
-        <mat-cell *matCellDef="let row">
+        <mat-cell *matCellDef="let element">
           <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
+                        (change)="$event ? selection.toggle(element) : null"
+                        [checked]="selection.isSelected(element)"
+                        [aria-label]="checkboxLabel(element)">
           </mat-checkbox>
         </mat-cell>
       </ng-container>
 
-      <!-- Position Column -->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
       </ng-container>
     
-      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
       </ng-container>
     
-      <!-- Weight Column -->
       <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
       </ng-container>
     
-      <!-- Symbol Column -->
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
@@ -45,3 +41,4 @@
     </mat-table>    
   </mat-tab>
 </mat-tab-group>
+<button mat-button class="btn btn-success" (click)="onPlaceOrderClick()">Place Order</button>
