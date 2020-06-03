@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RedirectService } from './redirect.service';
+import { DataService } from './data.service';
 
-describe('RedirectService', () => {
-  let service: RedirectService;
+describe('AuthService', () => {
+  let service: DataService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RedirectService);
+    service = TestBed.inject(DataService);
   });
 
   it('should be created', () => {

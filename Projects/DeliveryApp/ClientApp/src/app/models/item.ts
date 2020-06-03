@@ -3,12 +3,12 @@ export class Item {
     name: string;
     description: string;
     price: number;
-    category: number;
+    categoryID: number;
 
-    constructor(name: string, description: string, price: number, category: number) {
+    constructor(name: string, description: string, price: number, categoryID: number) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category = category;
+        this.categoryID = categoryID;
     }
  }

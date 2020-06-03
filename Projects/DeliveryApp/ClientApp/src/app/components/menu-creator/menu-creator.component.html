@@ -1,80 +1,35 @@
-<div cdkDropListGroup>
-  <!-- <div class="example-container">
-        <h2>Menu</h2>
-        SOMETHING
-        <div
-          cdkDropList
-          [cdkDropListData]="menu"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)">
-          <div class="example-box" *ngFor="let section of menu" cdkDrag>
-              <div 
-                cdkDropList
-                [cdkDropListData]=section
-                class="internal-list"
-                (cdkDropListDropped)="drop($event)">
-                <div class="example-box" *ngFor="let item of section" cdkDrag>
-                    {{item}}
-                </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
 
-  <!-- <form>
-        <button class="btn btn-warning" type="submit">Submit</button>
-      </form> -->
-
-
-
-
-  <!--       
-  <div class="example-container">
-    <h2>Available</h2>
-
-    <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-    </div>
-  </div>
-
-  <div class="example-container">
-    <h2>Menu</h2>
-
-    <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-    </div>
-  </div> -->
-
-  <div class="example-container">
-    <h2>Menu</h2>
-
-    <div cdkDropList [cdkDropListData]="menu?.categories" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let category of menu?.categories; index as categoryIndex" cdkDrag>
-        <div class="example-container">
-          
-          <h2>{{category.name}}</h2>
-          <div cdkDropList [cdkDropListData]="category?.products" class="example-list"
-            (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let product of category?.products; index as productIndex" cdkDrag>
-              {{product.name}}
-              <button class="delete btn btn-warning" title="delete product"
-                (click)="delete(menu, categoryIndex, category, productIndex, product)">x</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div *ngFor="let inventory of inventories">
-    {{inventory.product.name}}
-  </div>
-
-  <!-- <div class="example-container">
-    <h2>Available</h2>
-
-    <div cdkDropList [cdkDropListData]="inventories" class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let inventory of inventories" cdkDrag>{{inventory.id}}</div>
-    </div>
-  </div> -->
-</div>
+<button class="btn btn-warning" type="submit" (click)="openAddItemDialog()">Add to your menu</button>
+<mat-tab-group>
+  <mat-tab label="{{category.id}}" *ngFor="let category of categories">
+    <ng-template mat-tab-label>{{category.name}}</ng-template>
+    <mat-table [dataSource]="category.items" class="mat-elevation-z8">
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+    
+      <!-- Weight Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+      </ng-container>
+    
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+      </ng-container>
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>    
+  </mat-tab>
+</mat-tab-group>

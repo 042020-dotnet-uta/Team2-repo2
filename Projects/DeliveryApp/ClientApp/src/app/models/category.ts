@@ -1,9 +1,16 @@
 import { Item } from './item';
 import { Restaurant } from './restaurant';
 
-export interface Category {
+export class Category {
     id: number;
     name: string;
     description: string;
-    restaurant: Restaurant;
+    restaurantID: number;
+    items?: Item[];
+    constructor(name: string, description: string, restaurantID: number, items?: Item[]) {
+        this.name = name;
+        this.description = description;
+        this.restaurantID = restaurantID;
+        this.items = items;
+    }
 }
