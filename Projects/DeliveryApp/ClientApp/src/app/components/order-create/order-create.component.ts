@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category } from '../../models/category';
 import { Item } from '../../models/item';
+import { Order } from '../../models/order';
+import { OrderItem } from '../../models/orderitem';
 import { Restaurant } from '../../models/restaurant';
+import { User } from '../../models/user';
 
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { RestaurantService } from '../../services/restaurant/restaurant.service';
@@ -19,13 +21,24 @@ export class OrderCreateComponent implements OnInit {
 
   category: Category;
   categories: Category[];
+  user: User;
+  order: Order;
+  orderItems: Map<number, OrderItem>;
   restaurant: Restaurant;
   displayedColumns = [ 'select', 'id', 'name', 'price', 'description'];
 
   constructor(private route: ActivatedRoute,
               private restaurantService: RestaurantService) { 
+    // TODO: AUTH
+    this.user = new User(6);
+    let driver = new User(6);
+    let preparer = new User(6);
+
     const id = + this.route.snapshot.paramMap.get('id');
     this.restaurant = new Restaurant(id, null, null);
+    // kludge, orders CAN'T have a preparer or a driver at this point.
+    this.order = new Order(this.user.id, preparer.id, driver.id, this.restaurant.id);
+    this.orderItems = new Map<number, OrderItem>();
   }
 
   ngOnInit(): void {
@@ -48,38 +61,25 @@ export class OrderCreateComponent implements OnInit {
     });
   }
 
-  save(): void {
-    // this.restaurantService.placeOrder().subscribe();
-    // this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
-  }
-
-  goBack(): void {
-    // this.location.back();
-  }
-
   selection = new SelectionModel<Item>(true, []);
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    // const numRows = this.category.items.length;
-    // return numSelected === numRows;
-    return false;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-        this.selection.clear() :
-        this.category.items.forEach(row => this.selection.select(row));
-  }
-
   /** The label for the checkbox on the passed row */
-  checkboxLabel(row?: Item): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+  checkboxLabel(item?: Item): string {
+    // if (!item) {
+    //   return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+    // }
+
+    if (this.selection.isSelected(item) && !this.orderItems.has(item.id)) {
+      let orderItem = new OrderItem(item.id);
+      this.order.orderItems.push(orderItem);
+      this.orderItems.set(item.id, orderItem);
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+    return `${this.selection.isSelected(item) ? 'deselect' : 'select'} item ${item.id + 1}`;
+  }
+
+  onPlaceOrderClick() {
+    this.restaurantService.addOrder(this.order).subscribe(result =>
+      { });
   }
 }
 
