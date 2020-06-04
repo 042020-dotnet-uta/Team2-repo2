@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from '@angular/material/tabs';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -64,6 +65,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     //   InMemoryDataService, { dataEncapsulation: false }
     // ),
     ReactiveFormsModule,
+    FormsModule,
     MatCheckboxModule,
     MatGridListModule,
     MatPaginatorModule,
@@ -78,6 +80,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
     MatInputModule,
     MatSelectModule,
     MatTabsModule,
+    GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: ''
     }),
