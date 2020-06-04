@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  base: 'https://localhost:5001/api'
-  // base: 'https://deliveryserver.azurewebsites.net/api'
+  // base: 'https://localhost:5001/api'
+  base: 'https://deliveryserver.azurewebsites.net/api'
 };
 
 /*

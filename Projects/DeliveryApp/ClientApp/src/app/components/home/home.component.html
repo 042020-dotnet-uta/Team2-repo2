@@ -14,23 +14,21 @@
     <div>
       <img class="dashboard-grid-image" src="./assets/img/undraw_breakfast_psiw.svg" alt="undraw_breakfast_psiw.svg">
       <p>Feed yourself</p>
-      <a (click)="openCustomerDialog()">Create a customer account</a>
+      <a (click)="auth.login('customer')">Create a customer account</a>
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
     <div>
       <img class="dashboard-grid-image" src="./assets/img/undraw_Chef_cu0r.svg" alt="undraw_Chef_cu0r.svg">
       <p>Your restaurant, delivered</p>
-      <a (click)="openRestaurantDialog()">Add your restaurant</a>      
+      <a (click)="auth.login('restaurant')">Add your restaurant</a>      
     </div>
   </mat-grid-tile>
   <mat-grid-tile>
     <div>
       <img class="dashboard-grid-image" src="./assets/img/undraw_takeout_boxes_ap54.svg" alt="undraw_takeout_boxes_ap54.svg">
       <p>Deliver the eats</p>
-      <a (click)="openDriverDialog()">Sign up to deliver</a>
+      <a (click)="auth.login('driver')">Sign up to deliver</a>
     </div>
   </mat-grid-tile>
 </mat-grid-list>
-<!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
-<div *ngIf="user">Welcome, {{user.username}}</div>

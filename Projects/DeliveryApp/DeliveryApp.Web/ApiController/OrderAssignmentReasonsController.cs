@@ -109,13 +109,13 @@ namespace DeliveryApp.Web.ApiController
 
         
         //This post method is only returning object of created on stuff so this method will be use for API Test
-        [HttpPost]
-        public async Task<ActionResult<OrderAssignmentReason>> PostOrderAssignmentReasonForAPITest(OrderAssignmentReason orderAssignmentReason)
-        {
-            _context.OrderAssignmentReasons.Add(orderAssignmentReason);
-            await _context.SaveChangesAsync();  //save() vs SaveChangesAsync() ... b/c we are using async ... match the pair .... one or teh other
+        // [HttpPost]
+        // public async Task<ActionResult<OrderAssignmentReason>> PostOrderAssignmentReasonForAPITest(OrderAssignmentReason orderAssignmentReason)
+        // {
+        //     _context.OrderAssignmentReasons.Add(orderAssignmentReason);
+        //     await _context.SaveChangesAsync();  //save() vs SaveChangesAsync() ... b/c we are using async ... match the pair .... one or teh other
 
-            return orderAssignmentReason;
-        }
+        //     return orderAssignmentReason;
+        // }
     }
 }
