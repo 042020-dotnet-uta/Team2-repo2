@@ -34,6 +34,9 @@ export class HomeComponent {
               private service: DataService,
               public goog: GoogleService,
               public auth: AuthService) {
+    if (this.auth.loggedIn) {
+      auth.logout();
+    }
     this.searchForm = fb.group({ 
       search: ''
     });

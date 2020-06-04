@@ -1,4 +1,3 @@
-<div class="order-creator">
   <mat-tab-group>
     <mat-tab label="{{category.id}}" *ngFor="let category of categories">
       <ng-template mat-tab-label>{{category.name}}</ng-template>
@@ -8,8 +7,10 @@
         <ng-container matColumnDef="select">
           <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
           <mat-cell *matCellDef="let element">
-            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(element) : null"
-              [checked]="selection.isSelected(element)" [aria-label]="checkboxLabel(element)">
+            <mat-checkbox [disabled]="!authService.loggedIn" (click)="$event.stopPropagation()" 
+                          (change)="$event ? selection.toggle(element) : null"
+                          [checked]="selection.isSelected(element)" 
+                          [aria-label]="checkboxLabel(element)">
             </mat-checkbox>
           </mat-cell>
         </ng-container>
@@ -40,5 +41,5 @@
       </mat-table>
     </mat-tab>
   </mat-tab-group>
-  <button mat-button class="btn btn-success" (click)="onPlaceOrderClick()">Place Order</button>
-</div>
+  <button mat-button class="btn btn-success" (click)="onPlaceOrderClick()" *ngIf="!authService.loggedIn" [disabled]="!authService.loggedIn">Please Login</button>
+  <button mat-button class="btn btn-success" (click)="onPlaceOrderClick()" *ngIf="authService.loggedIn">Place Order</button>

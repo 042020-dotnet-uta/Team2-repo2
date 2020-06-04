@@ -19,6 +19,6 @@ namespace DeliveryApp.Data.Objects
         [RegularExpression(InputValidation.descriptionPattern, ErrorMessage = InputValidation.descriptionError)]
         public string Description { get; set; }
         public Restaurant() { }
-
+        public Address Adresss { get; set; }
     }
 }

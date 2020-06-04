@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 
@@ -35,8 +34,7 @@ export class MenuCreatorComponent implements OnInit {
 
   constructor(private dataService: DataService,
     private restaurantService: RestaurantService,
-    public dialog: MatDialog,
-    private changeDetetectorRef: ChangeDetectorRef) {
+    public dialog: MatDialog) {
     this.restaurant = new Restaurant(1, null, null);
   }
 
@@ -76,19 +74,6 @@ export class MenuCreatorComponent implements OnInit {
   delete(menu: Menu, categoryIndex: number, category: Category, itemIndex: number, item: Item): void {
     // this.menu.categories[categoryIndex].items = this.menu.categories[categoryIndex].items.filter(p => p !== item);
     // this.service.deleteMenuItem(menu, this.menu.categories[categoryIndex], item).subscribe();
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      console.log('prev == next');
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      console.log('prev != next');
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
   }
 }
 
