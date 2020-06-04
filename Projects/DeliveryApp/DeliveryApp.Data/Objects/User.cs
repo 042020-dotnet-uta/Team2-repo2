@@ -32,7 +32,7 @@ namespace DeliveryApp.Data.Objects
         public int UserTypeID { get; set; }// This is a navigation property, allows uas to acces the UserType Property .. below
         public UserType UserType { get; set; }
 
-        public Address Adress { get; set; }
+        public Address Address { get; set; }
 
         /// <summary>
         /// No-argument constructor
