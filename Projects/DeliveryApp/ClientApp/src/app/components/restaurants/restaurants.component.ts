@@ -31,13 +31,12 @@ export class RestaurantsComponent implements OnInit {
   constructor(private restaurantService: RestaurantService, 
               private dataService: DataService, 
               private fb: FormBuilder) {
-    this.restaurant = new Restaurant(1,null,null);
-
     this.inventoryForm = fb.group({
       "name": ["", Validators.required],
       "price": ["", Validators.required],
       "quantity": ["", Validators.required]
     });
+    
   }
 
   ngOnInit() {

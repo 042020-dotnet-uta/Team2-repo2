@@ -47,7 +47,7 @@ export class MenuCreatorComponent implements OnInit {
   }
 
   getCategoriesAndItems(restaurant: Restaurant) {
-    this.restaurantService.getCategories(this.restaurant).subscribe(categories => {
+    this.restaurantService.getCategories().subscribe(categories => {
       this.categories = categories.filter(category => category.restaurantID == this.restaurant.id);
       this.categories.forEach(category => {
         this.restaurantService.getItems(category).subscribe(items => {category.items = items.filter(item => item.categoryID == category.id)});

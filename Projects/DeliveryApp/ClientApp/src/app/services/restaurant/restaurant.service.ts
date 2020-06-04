@@ -4,7 +4,9 @@ import { Category } from '../../models/category';
 import { Item } from '../../models/item';
 import { Menu } from '../../models/menu';
 import { Order } from '../../models/order';
+import { OrderItem } from '../../models/orderitem';
 import { Restaurant } from '../../models/restaurant';
+import { User } from '../../models/user';
 
 import { environment } from '../../../environments/environment';
  
@@ -58,8 +60,7 @@ export class RestaurantService {
     return this.http.delete<Restaurant>(url, this.httpOptions);
   }
 
-  getCategories(restaurant: Restaurant): Observable<Category[]> {
-    const restaurantId = typeof restaurant === 'number' ? restaurant : restaurant.id;
+  getCategories(): Observable<Category[]> {
     const url = `${this.baseUrl}/${this.categories}`;
     return this.http.get<Category[]>(url);
   }
@@ -83,6 +84,26 @@ export class RestaurantService {
   addOrder(order: Order): Observable<Order> {
     const url = `${this.baseUrl}/${this.orders}`;
     return this.http.post<Order>(url, order, this.httpOptions);
+  }
+
+  addOrderItem(orderItem: OrderItem): Observable<OrderItem> {
+    const url = `${this.baseUrl}/orderassignmentreasons`;
+    return this.http.post<OrderItem>(url, orderItem, this.httpOptions);
+  }
+
+  getOrders(): Observable<Order[]> {
+    const url = `${this.baseUrl}/orders`;
+    return this.http.get<Order[]>(url);
+  }
+
+  getUsers(): Observable<User[]> {
+    const url = `${this.baseUrl}/users`;
+    return this.http.get<User[]>(url);
+  }
+
+  addUser(user: User): Observable<User> {
+    const url = `${this.baseUrl}/${this.users}`;
+    return this.http.post<User>(url, user, this.httpOptions);
   }
 
 

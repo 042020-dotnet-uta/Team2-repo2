@@ -1,44 +1,44 @@
-<mat-tab-group>
-  <mat-tab label="{{category.id}}" *ngFor="let category of categories">
-    <ng-template mat-tab-label>{{category.name}}</ng-template>
-    <mat-table [dataSource]="category.items" class="mat-elevation-z8">
+<div class="order-creator">
+  <mat-tab-group>
+    <mat-tab label="{{category.id}}" *ngFor="let category of categories">
+      <ng-template mat-tab-label>{{category.name}}</ng-template>
+      <mat-table [dataSource]="category.items" class="mat-elevation-z8">
 
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <mat-checkbox (click)="$event.stopPropagation()"
-                        (change)="$event ? selection.toggle(element) : null"
-                        [checked]="selection.isSelected(element)"
-                        [aria-label]="checkboxLabel(element)">
-          </mat-checkbox>
-        </mat-cell>
-      </ng-container>
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="select">
+          <mat-header-cell *matHeaderCellDef>Select</mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(element) : null"
+              [checked]="selection.isSelected(element)" [aria-label]="checkboxLabel(element)">
+            </mat-checkbox>
+          </mat-cell>
+        </ng-container>
 
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="price">
-        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
-      </ng-container>
-    
-      <ng-container matColumnDef="description">
-        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
-      </ng-container>
-    
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.categoryID}} </mat-cell>
+        </ng-container>
 
-    </mat-table>    
-  </mat-tab>
-</mat-tab-group>
-<button mat-button class="btn btn-success" (click)="onPlaceOrderClick()">Place Order</button>
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+      </mat-table>
+    </mat-tab>
+  </mat-tab-group>
+  <button mat-button class="btn btn-success" (click)="onPlaceOrderClick()">Place Order</button>
+</div>

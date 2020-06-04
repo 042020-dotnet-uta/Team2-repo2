@@ -10,17 +10,19 @@ import { RestaurantComponent } from '../../src/app/components/restaurant/restaur
 import { RestaurantsComponent } from '../../src/app/components/restaurants/restaurants.component';
 import { OrderCreateComponent } from './components/order-create/order-create.component';
 import { NavbarComponent } from '../../src/app/components/navbar/navbar.component'; 
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'customer', component: CustomerComponent },
   { path: 'driver', component: DriverComponent },
+  { path: 'menu-creator', component: MenuCreatorComponent },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'orders', component: OrdersComponent },
   { path: 'restaurant', component: RestaurantComponent },
   { path: 'restaurants', component: RestaurantsComponent },
-  { path: 'navbar', component: NavbarComponent },
-  { path: 'restaurants/:id', component: OrderCreateComponent },
-  { path: 'menu-creator', component: MenuCreatorComponent }
+  { path: 'restaurants/:id', component: OrderCreateComponent }
 ];
 
 @NgModule({

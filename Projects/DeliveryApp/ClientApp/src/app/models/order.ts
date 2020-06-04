@@ -2,7 +2,7 @@ import { OrderItem } from './orderitem';
 
 export class Order {
     id: number;
-    customerID: number
+    customerID: number;
     preparerID: number;
     driverID: number;
     locationID: number;

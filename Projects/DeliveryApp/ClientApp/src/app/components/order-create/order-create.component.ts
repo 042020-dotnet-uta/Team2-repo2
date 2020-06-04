@@ -9,6 +9,7 @@ import { User } from '../../models/user';
 import { ActivatedRoute } from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 
+import { AuthService } from '../../auth.service';
 import { RestaurantService } from '../../services/restaurant/restaurant.service';
 
 @Component({
@@ -25,19 +26,53 @@ export class OrderCreateComponent implements OnInit {
   order: Order;
   orderItems: Map<number, OrderItem>;
   restaurant: Restaurant;
-  displayedColumns = [ 'select', 'id', 'name', 'price', 'description'];
+  displayedColumns = ['select', 'id', 'name', 'price', 'description'];
 
   constructor(private route: ActivatedRoute,
-              private restaurantService: RestaurantService) { 
-    // TODO: AUTH
-    this.user = new User(6);
-    let driver = new User(6);
-    let preparer = new User(6);
+    private authService: AuthService,
+    private restaurantService: RestaurantService) {
+    this.authService.userProfile$.subscribe(user => {
+      this.user = new User();
+      this.user.fName = user.given_name;
+      this.user.lName = user.family_name;
+      this.user.password = user.email;
+      if (user == null) {
+        // TODO USER NOT AUTHENTICATED, REDIRECT TO DASHBOARD
+        console.log('illegal');
+      } else {
+        this.restaurantService.getUsers().subscribe(users => {
+          let temp = users.filter(user => user.password == this.user.password);
+          if (temp == null || temp.length == 0) {
 
-    const id = + this.route.snapshot.paramMap.get('id');
-    this.restaurant = new Restaurant(id, null, null);
-    // kludge, orders CAN'T have a preparer or a driver at this point.
-    this.order = new Order(this.user.id, preparer.id, driver.id, this.restaurant.id);
+            // TODO GET USER TYPE FROM ROUTER
+            this.user.userTypeID = 1;
+            console.log(this.user);
+
+            this.restaurantService.addUser(this.user).subscribe(user => {
+              this.user = user;
+              console.log(`${this.user.id} created!`);
+            });
+          } else {
+            console.log("exists");
+            this.user = temp[0];
+          }
+          // TODO CHECK IF USER IS ADMIN OR CUSTOMER TYPE
+
+
+          // if allowed..
+          let driver = new User(this.user.id);
+          let preparer = new User(this.user.id);
+
+          const id = + this.route.snapshot.paramMap.get('id');
+          this.restaurant = new Restaurant(id, null, null);
+          // kludge, orders CAN'T have a preparer or a driver at this point.
+          this.order = new Order(this.user.id, preparer.id, driver.id, this.restaurant.id);
+
+        });
+      }
+    });
+    // this.user = new User(6);
+
     this.orderItems = new Map<number, OrderItem>();
   }
 
@@ -53,10 +88,10 @@ export class OrderCreateComponent implements OnInit {
   }
 
   getCategoriesAndItems(restaurant: Restaurant) {
-    this.restaurantService.getCategories(this.restaurant).subscribe(categories => {
+    this.restaurantService.getCategories().subscribe(categories => {
       this.categories = categories.filter(category => category.restaurantID == this.restaurant.id);
       this.categories.forEach(category => {
-        this.restaurantService.getItems(category).subscribe(items => {category.items = items.filter(item => item.categoryID == category.id); });
+        this.restaurantService.getItems(category).subscribe(items => { category.items = items.filter(item => item.categoryID == category.id); });
       });
     });
   }
@@ -69,7 +104,9 @@ export class OrderCreateComponent implements OnInit {
     //   return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     // }
 
+    // TODO REMOVE FROM MAP IF NOT SELECTED
     if (this.selection.isSelected(item) && !this.orderItems.has(item.id)) {
+      console.log(this.user.id);
       let orderItem = new OrderItem(item.id);
       this.order.orderItems.push(orderItem);
       this.orderItems.set(item.id, orderItem);
@@ -77,9 +114,15 @@ export class OrderCreateComponent implements OnInit {
     return `${this.selection.isSelected(item) ? 'deselect' : 'select'} item ${item.id + 1}`;
   }
 
+  // TODO DON'T PLACE ORDER IF NO ORDERS
   onPlaceOrderClick() {
-    this.restaurantService.addOrder(this.order).subscribe(result =>
-      { });
+    console.log(this.order);
+    this.restaurantService.addOrder(this.order).subscribe(result => {
+      this.orderItems.forEach(orderItem => {
+        orderItem.reason = result.id;
+        this.restaurantService.addOrderItem(orderItem).subscribe();
+      });
+    });
   }
 }
 
