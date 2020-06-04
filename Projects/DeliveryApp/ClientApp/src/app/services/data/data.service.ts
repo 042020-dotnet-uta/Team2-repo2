@@ -16,9 +16,9 @@ export class DataService {
   }
 
   getData(): Observable<any> {
+    let temp = this.data;
     // this.clearData();
-    console.log(this.data);
-    return of(this.data);
+    return of(temp);
   }
 
   clearData() {

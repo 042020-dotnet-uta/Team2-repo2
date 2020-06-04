@@ -26,6 +26,9 @@ export class HomeComponent {
               private dialog: MatDialog, 
               private service: DataService,
               public auth: AuthService) {
+    if (this.auth.loggedIn) {
+      auth.logout();
+    }
     this.searchForm = fb.group({ 
       search: ''
     });

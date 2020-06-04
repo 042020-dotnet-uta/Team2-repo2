@@ -1,4 +1,4 @@
-<div class="menu-creator-div" style="height:93%">
+<div>
   <button class="btn btn-warning" type="submit" (click)="openAddItemDialog()">Add to your menu</button>
   <mat-tab-group>
     <mat-tab label="{{category.id}}" *ngFor="let category of categories">
@@ -34,4 +34,3 @@
     </mat-tab>
   </mat-tab-group>
 </div>
-<app-footer></app-footer>

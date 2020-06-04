@@ -50,6 +50,9 @@ export class RestaurantsComponent implements OnInit {
   }
 
   getRestaurants(): void {
+    if (this.search == null) {
+      this.search = '';
+    } 
     this.restaurantService.getRestaurants().subscribe(restaurants => this.restaurants = restaurants.filter(r => r.name.includes(this.search)));
   }
 
