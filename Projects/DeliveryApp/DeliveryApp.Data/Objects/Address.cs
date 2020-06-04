@@ -25,8 +25,6 @@ namespace DeliveryApp.Data.Objects
         [Required]
         [DisplayName("Zip Code")]
         public string ZipCode { get; set; }
-        //public int UserID { get; set; } // This is a navigation property, allows us to acces the User Property .. below
-        //public User User { get; set; }
         public Address() { }
 
 
