@@ -3,8 +3,8 @@
     <img class="dashboard-main-image" src="./assets/img/dan-gold-E6HjQaB7UEA-unsplash.jpg" alt="dan-gold-E6HjQaB7UEA-unsplash.jpg">
   </div>
   <div class="dashboard-div-right">
-    <form (ngSubmit)="onSubmit()" [formGroup]="searchForm" class="dashboard-search-form form-inline">
-      <input class="form-control" formControlName="search" type="text" placeholder="Enter delivery address">
+    <form (ngSubmit)="getAddresses()" [formGroup]="searchForm" class="dashboard-search-form form-inline">
+      <input class="form-control" formControlName="search" type="text" placeholder="Enter your Address">
       <button class="btn btn-warning" type="submit">Submit</button>
     </form>
   </div>
