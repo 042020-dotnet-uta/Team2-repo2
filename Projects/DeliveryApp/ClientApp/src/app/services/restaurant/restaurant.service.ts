@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { Category } from '../../models/category';
 import { Item } from '../../models/item';
-import { Menu } from '../../models/menu';
 import { Order } from '../../models/order';
 import { OrderItem } from '../../models/orderitem';
 import { Restaurant } from '../../models/restaurant';
@@ -104,25 +103,5 @@ export class RestaurantService {
   addUser(user: User): Observable<User> {
     const url = `${this.baseUrl}/${this.users}`;
     return this.http.post<User>(url, user, this.httpOptions);
-  }
-
-
-
-
-
-
-  //
-  getMenu(id: number): Observable<Menu> {
-    const url = `${this.baseUrl}/${this.menus}/${id}`;
-    return this.http.get<Menu>(url);
-  }
-
-  deleteMenuItem(menu: Menu | number, category: Category | number, item: Item | number): Observable<Item> {
-    const menuId = typeof menu === 'number' ? menu : menu.id;
-    const categoryId = typeof category === 'number' ? category : category.id;
-    const itemId = typeof item === 'number' ? item : item.id;
-    const url = `${this.baseUrl}/${this.menus}/${menuId}/categories/${categoryId}/items/${itemId}`
-
-    return this.http.delete<Item>(url, this.httpOptions);
   }
 }

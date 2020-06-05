@@ -78,7 +78,6 @@
           }
         },
         "test": {
-          "codeCoverageExclude": ["/**/*service*.ts"],
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "src/test.ts",

@@ -1,9 +1,11 @@
 import { OrderItem } from './orderitem';
 import { Restaurant } from './restaurant';
+import { User } from './user';
 
 export class Order {
     id: number;
     customerID: number;
+    customer: User;
     preparerID: number;
     driverID: number;
     locationID: number;

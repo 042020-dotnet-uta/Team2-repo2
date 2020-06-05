@@ -46,7 +46,7 @@ export class HomeComponent {
     });
   }
 
-  async getAddresses(){
+  async getAddresses() {
     this.adrs.getAddresses().subscribe(addresses => this.addresses = addresses);
     this.org = this.searchForm.value.search;
     alert("places within 25 miles of you");
@@ -57,6 +57,7 @@ export class HomeComponent {
         alert(this.addresses[i].address1);
       }
     }
+    this.router.navigateByUrl('/restaurants');
   }
 
   //first bind org and dest to use
