@@ -1,4 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
 import { Category } from '../../models/category';
 import { Item } from '../../models/item';
 import { Order } from '../../models/order';
@@ -32,7 +36,9 @@ export class OrderCreateComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public authService: AuthService,
-              private restaurantService: RestaurantService) { 
+              public dialog: MatDialog,
+              private restaurantService: RestaurantService,
+              private router: Router) { 
     // TODO: AUTH
     // this.user = new User(6);
     let driver = new User(6);
@@ -108,12 +114,68 @@ export class OrderCreateComponent implements OnInit {
     return `${this.selection.isSelected(item) ? 'deselect' : 'select'} item ${item.id + 1}`;
   }
 
+  // openAddItemDialog() {
+  //   const dialogRef = this.dialog.open(MenuCreatorDialogComponent, {
+  //     data: this.categories
+  //   });
+
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if (result.categoryId) { 
+  //       var newItem = new Item(result.name, result.description, result.price, result.categoryId);
+  //       this.restaurantService.addItem(newItem).subscribe(item => this.getCategoriesAndItems(this.restaurant));
+  //     } else {
+  //       var newCategory = new Category(result.name, result.description, this.restaurant.id);
+  //       console.log(newCategory);
+  //       this.restaurantService.addCategory(newCategory).subscribe(item => this.getCategoriesAndItems(this.restaurant));
+  //     }
+  //     // this.item = new Item(result.name, result.description, result.price, result.categoryId);
+  //   });
+  // }
+
   onPlaceOrderClick() {
     this.restaurantService.addOrder(this.order).subscribe(result => {
       this.orderItems.forEach(orderItem => {
         orderItem.reason = result.id;
         this.restaurantService.addOrderItem(orderItem).subscribe();
       });
+      this.router.navigateByUrl('/customer');
     });
   }
+}
+
+export class OrderCreateDialogComponent {
+  // itemForm: FormGroup;
+  // categoryForm: FormGroup;
+  // category;
+
+  constructor(
+    // private formBuilder: FormBuilder,
+    // private dialogRef: MatDialogRef<OrderCreateDialogComponent>,
+    // @Inject(MAT_DIALOG_DATA) public categories: Category[]
+    ) {
+    // this.itemForm = this.formBuilder.group({
+    //   name: '',
+    //   price: '',
+    //   description: '',
+    //   categoryId: '',
+    //   categoryName: ''
+    // });
+    // this.categoryForm = this.formBuilder.group({
+    //   name: '',
+    //   description: ''
+    // });
+  }
+
+  ngOnInit() {
+  }
+
+  // onCancelClick() {
+  //   this.dialogRef.close();
+  // }
+  // onItemConfirmClick() {
+  //   this.dialogRef.close(this.itemForm.value);
+  // }
+  // onCategoryConfirmClick() {
+  //   this.dialogRef.close(this.categoryForm.value);
+  // }
 }

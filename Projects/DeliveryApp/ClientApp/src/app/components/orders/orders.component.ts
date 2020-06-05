@@ -31,9 +31,6 @@ export class OrdersComponent implements OnInit {
   constructor(private authService: AuthService, 
               private dataService: DataService,
               private restaurantService: RestaurantService) { 
-    this.dataService.getData().subscribe(data => {
-      console.log(`DATA SERVICE: USER TYPE ID - ${data.userTypeID}`)
-    });
     this.user = new User(6);
     this.restaurant = new Restaurant(1, null, null);
   }

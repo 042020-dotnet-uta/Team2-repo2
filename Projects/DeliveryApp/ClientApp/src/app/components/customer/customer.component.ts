@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Order } from '../../models/order';
 import { User } from '../../models/user';
@@ -17,16 +19,26 @@ import { RestaurantService } from '../../services/restaurant/restaurant.service'
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private authService: AuthService,
-    private dataService: DataService,
-    private restaurantService: RestaurantService) { }
+  search: string;
+  searchForm: FormGroup;
+
+  constructor(fb: FormBuilder,
+              private router: Router, 
+              private authService: AuthService,
+              private dataService: DataService,
+              private restaurantService: RestaurantService) {
+      this.searchForm = fb.group({ 
+        search: ''
+      });
+     }
   showNav: true;
 
   orders: Order[];
   user: User;
   users: User[];
   adminUserTypeID: 1 // really bad idea
-  customerUserTypeID: 2; // bad idea
+  customerUserTypeID: 3; // bad idea
+  currentDate = new Date();
 
   displayedColumns: string[] = ['id', 'customer', 'total', 'order date'];
   dataSource: MatTableDataSource<Order>;
@@ -67,7 +79,6 @@ export class CustomerComponent implements OnInit {
   }
 
   getOrdersUser(user: User) {
-    console.log('here');
     this.restaurantService.getOrders().subscribe(results => {
       console.log(this.user.id);
       this.orders = results.filter(order => order.customerID == this.user.id);
@@ -84,5 +95,12 @@ export class CustomerComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  onSubmit() {
+    this.dataService.setData(this.searchForm.value.search).subscribe(result => {
+      this.search = result;
+      this.router.navigateByUrl('/restaurants');
+    });
   }
 }

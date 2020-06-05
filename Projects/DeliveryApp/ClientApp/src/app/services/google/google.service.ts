@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+declare var google: any;
 
 @Injectable({
   providedIn: 'root'
