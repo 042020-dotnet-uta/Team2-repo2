@@ -1,4 +1,5 @@
 import { OrderItem } from './orderitem';
+import { Restaurant } from './restaurant';
 
 export class Order {
     id: number;
@@ -6,6 +7,7 @@ export class Order {
     preparerID: number;
     driverID: number;
     locationID: number;
+    location: Restaurant;
     orderItems: OrderItem[];
 
     constructor(customerID: number, preparerID: number, driverID: number, locationID: number) {

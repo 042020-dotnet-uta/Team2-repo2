@@ -11,7 +11,10 @@
         <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
       </mat-toolbar-row>
     </mat-toolbar> -->
-    
+    <form (ngSubmit)="onSubmit()" [formGroup]="searchForm" class="dashboard-search-form form-inline">
+      <input class="form-control" formControlName="search" type="text" placeholder="Enter delivery address">
+      <button class="btn btn-warning" type="submit">Submit</button>
+    </form>    
     <div>
       <h2>My Details (address, etc)</h2>
       <h2>Recent orders snapshot (paginated)?</h2>
@@ -32,17 +35,17 @@
       
           <ng-container matColumnDef="customer">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Restaurant </th>
-            <td mat-cell *matCellDef="let row"> {{row.restaurantID}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.location.name}} </td>
           </ng-container>
       
           <ng-container matColumnDef="total">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
-            <td mat-cell *matCellDef="let row"> something </td>
+            <td mat-cell *matCellDef="let row"> $ </td>
           </ng-container>
       
           <ng-container matColumnDef="order date">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </th>
-            <td mat-cell *matCellDef="let row"> something </td>
+            <td mat-cell *matCellDef="let row"> {{currentDate | date:'yyy-MM'}} </td>
           </ng-container>
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

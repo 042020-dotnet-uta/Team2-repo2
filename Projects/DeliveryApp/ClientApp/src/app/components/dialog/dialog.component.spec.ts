@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { DialogComponent } from './dialog.component';
 
 describe('DialogComponent', () => {
@@ -8,6 +11,10 @@ describe('DialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ 
+        FormsModule, 
+        ReactiveFormsModule,
+        MatDialogRef ],
       declarations: [ DialogComponent ]
     })
     .compileComponents();

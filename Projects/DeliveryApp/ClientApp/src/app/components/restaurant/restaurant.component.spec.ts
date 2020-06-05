@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { RestaurantComponent } from './restaurant.component';
 
 describe('RestaurantComponent', () => {
@@ -8,6 +11,8 @@ describe('RestaurantComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ RouterTestingModule,
+                 HttpClientTestingModule ],
       declarations: [ RestaurantComponent ]
     })
     .compileComponents();
@@ -19,7 +24,7 @@ describe('RestaurantComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
