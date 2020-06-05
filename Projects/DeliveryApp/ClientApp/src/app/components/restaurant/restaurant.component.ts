@@ -17,6 +17,7 @@ export class RestaurantComponent implements OnInit {
 
   user: User;
   restaurant: Restaurant;
+  currentDate = new Date();
   restaurantUserTypeID: 4;
   adminUserTypeID: 1;
 

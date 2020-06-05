@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Menu } from '../../models/menu';
 import { Item } from '../../models/item';
@@ -13,7 +13,6 @@ import { Restaurant } from '../../models/restaurant';
 import { DataService } from '../../services/data/data.service';
 import { RestaurantService } from '../../services/restaurant/restaurant.service';
 import { MatTabChangeEvent } from '@angular/material/tabs/tab-group';
-
 
 @Component({
   selector: 'app-menu-creator',
@@ -90,15 +89,15 @@ export class MenuCreatorDialogComponent {
     private dialogRef: MatDialogRef<MenuCreatorDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public categories: Category[]) {
     this.itemForm = this.formBuilder.group({
-      name: '',
-      price: '',
-      description: '',
-      categoryId: '',
-      categoryName: ''
+      name: ['', Validators.required],
+      price: ['', Validators.required],
+      description: ['', Validators.required],
+      categoryId: ['', Validators.required],
+      categoryName: ['', Validators.required]
     });
     this.categoryForm = this.formBuilder.group({
-      name: '',
-      description: ''
+      name: ['', Validators.required],
+      description: ['', Validators.required]
     });
   }
 

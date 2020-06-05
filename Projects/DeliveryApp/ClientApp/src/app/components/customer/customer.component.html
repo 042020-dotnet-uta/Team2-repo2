@@ -1,24 +1,9 @@
-<!-- <mat-drawer-container class="example-container" hasBackdrop="true" fullscreen>
-  <mat-drawer #drawer mode="over">I'm a drawer</mat-drawer>
-  <mat-drawer-content>
-    <mat-toolbar>
-      <mat-toolbar-row>
-        <span>
-          <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
-        </span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">favorite</mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon">delete</mat-icon>
-      </mat-toolbar-row>
-    </mat-toolbar> -->
+<h2 *ngIf="user?.password">{{user?.password}}</h2>
     <form (ngSubmit)="onSubmit()" [formGroup]="searchForm" class="dashboard-search-form form-inline">
       <input class="form-control" formControlName="search" type="text" placeholder="Enter delivery address">
       <button class="btn btn-warning" type="submit">Submit</button>
     </form>    
     <div>
-      <h2>My Details (address, etc)</h2>
-      <h2>Recent orders snapshot (paginated)?</h2>
-
 
       <mat-form-field>
         <mat-label>Filter</mat-label>
@@ -55,5 +40,3 @@
         <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
       </div>
     </div>
-  <!-- </mat-drawer-content> -->
-<!-- </mat-drawer-container> -->

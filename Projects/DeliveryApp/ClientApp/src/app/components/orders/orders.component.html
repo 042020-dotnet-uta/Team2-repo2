@@ -13,17 +13,17 @@
   
       <ng-container matColumnDef="customer">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer </th>
-        <td mat-cell *matCellDef="let row"> {{row.customer.name}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.customer.lName}}, {{row.customer.fName}} </td>
       </ng-container>
   
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Total </th>
-        <td mat-cell *matCellDef="let row"> ${{row.name}} </td>
+        <td mat-cell *matCellDef="let row"> $ </td>
       </ng-container>
   
       <ng-container matColumnDef="order date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Date </th>
-        <td mat-cell *matCellDef="let row"> {{row.color}} </td>
+        <td mat-cell *matCellDef="let row"> {{currentDate | date:'yyy-MM'}} </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

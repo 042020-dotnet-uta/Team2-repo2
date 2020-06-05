@@ -21,6 +21,7 @@ export class OrdersComponent implements OnInit {
   orders: Order[];
   restaurant: Restaurant;
   user: User;
+  currentDate = new Date();
   
   displayedColumns: string[] = ['id', 'customer', 'total', 'order date'];
   dataSource: MatTableDataSource<Order>;
