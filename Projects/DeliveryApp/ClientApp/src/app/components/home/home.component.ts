@@ -1,7 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 import { Router } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -23,7 +21,6 @@ import { Address } from 'src/app/models/address';
 export class HomeComponent {
   user: User;
   searchForm: FormGroup;
-  dialogRef: MatDialogRef<DialogComponent>;
   search: string;
   email: string;
   distance: string;
@@ -33,7 +30,6 @@ export class HomeComponent {
 
   constructor(fb: FormBuilder, 
               private router: Router, 
-              private dialog: MatDialog, 
               private service: DataService,
               public adrs: AddressService,
               public goog: GoogleService,
@@ -77,30 +73,6 @@ export class HomeComponent {
   }
   sayEmail(){
     alert(this.email);
-  }
-
-  openCustomerDialog() {
-    this.dialogRef = this.dialog.open(DialogComponent,{
-      // height: '330px',
-      // width: '400px'
-    });
-    this.dialogRef.afterClosed().subscribe(result => {
-      this.user = result;
-      this.router.navigateByUrl('/customer') });
-  }
-
-  openDriverDialog() {
-    this.dialogRef = this.dialog.open(DialogComponent,{});
-    this.dialogRef.afterClosed().subscribe(result => {
-      this.user = result;
-      this.router.navigateByUrl('/driver') });
-  }
-
-  openRestaurantDialog() {
-    this.dialogRef = this.dialog.open(DialogComponent,{});
-    this.dialogRef.afterClosed().subscribe(result => {
-      this.user = result;
-      this.router.navigateByUrl('/restaurant') });
   }
 
   onSubmit() {

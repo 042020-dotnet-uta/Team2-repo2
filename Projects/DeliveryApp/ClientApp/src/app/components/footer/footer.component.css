@@ -7,6 +7,9 @@ a {
 }
 
 .footer-main-div {
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
     background-color: #212121;
     border-top: 0.1em solid black; 
 } 
